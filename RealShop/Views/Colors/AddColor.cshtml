@@ -39,17 +39,17 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.ColorName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-6">
                 @Html.EditorFor(model => model.ColorName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ColorName, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-10">
-                Загрузить основное изображение цвета <input type="file" name="Image" />
+                Загрузить основное изображение цвета <input type="file" multiple name="Images" />
             </div>
         </div>
 
