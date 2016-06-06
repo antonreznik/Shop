@@ -1,0 +1,24 @@
+﻿@model IEnumerable<DomainModel.Classes.ProductsInOrder>
+
+
+<table class="table-bordered table-condensed">
+    <tr>
+        <th>ID товара</th>
+        <th>Наименование</th>
+        <th>ID категории</th>
+        <th>Категория</th>
+        <th>Количество</th>
+        <th>Стоимость</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>@item.Quantity</td>
+            <td>@item.TotalPrice</td>
+        </tr>
+    }
+</table>

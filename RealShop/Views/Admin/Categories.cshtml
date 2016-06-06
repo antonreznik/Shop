@@ -1,0 +1,38 @@
+﻿@model IQueryable<DomainModel.Classes.Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Категории товаров</h2>
+@foreach (var item in Model)
+{
+    string add_method = "";
+    
+    
+    if(item.CategoryId==1)
+    {
+        add_method="AddProduct";
+    }
+    
+    else if(item.CategoryId==2)
+    {
+        add_method = "AddCosmetic";      
+    }
+    
+    else if (item.CategoryId==3)
+    {
+        add_method = "AddCare";
+    }
+    
+    <div class="Categories">
+        @item.CategoryId - @item.CategoryName - @Html.ActionLink("Редактировать","EditCategory","Admin", new {item.CategoryId},null) | 
+        @Html.ActionLink("Удалить", "DeleteCategory", "Admin", new {item.CategoryId },null) |
+        @Html.ActionLink("Редактирование товаров в категории", "ShowProductsInCategory", "Admin", new { item.CategoryId }, null) |
+        @Html.ActionLink("Добавить новый товар", add_method,"Admin", new {item.CategoryId}, null)
+    </div>
+                               
+}
+
+<p>@Html.ActionLink("Добавить новую категорию","AddCategory","Admin")</p>

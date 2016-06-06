@@ -1,0 +1,82 @@
+﻿@model IQueryable<DomainModel.Classes.AbstractProduct>
+
+@{
+    int currency = 32;
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="product" itemscope itemtype="http://schema.org/Product">
+        <div class="product_image" itemprop="image">
+            @if (item.ImageData == null)
+            {
+                @:None
+            }
+
+            else
+            {
+                <img width="150" height="150" alt="@item.ProductName" src="@Url.Action("GetImage", "Admin", new { item.ProductId, item.CategoryId })" onclick="ShowProductInfo(@item.ProductId, @item.CategoryId)" />
+            }
+            <div class="message_add_to_cart">Товар добавлен в корзину</div>
+        </div>
+        <p itemprop="name">@item.ProductName</p>
+
+        @if (item.Colors != null && item.Colors.Capacity > 0)
+        {
+            List<SelectListItem> colors = new List<SelectListItem>();
+            foreach (var color in item.Colors)
+            {
+                colors.Add(new SelectListItem
+                {
+                    Text = color.ColorName,
+                    Value = color.ColorId.ToString()
+                });
+            }
+            <div class="list_with_colors">
+                @Html.DropDownList("List", colors, new { id = item.ProductId })
+                <script>
+                    $(function () {
+                        $("#@item.ProductId").selectmenu({
+                            width: 150
+                        })
+                            .selectmenu('menuWidget').css({ "height": "150", "font-size": "0.8em" });
+                    });
+                </script>
+            </div>
+        }
+
+        <span class="price_on_main_page">Цена - @Convert.ToInt32((item.Price * currency)) грн.</span>
+        @*<div class="buy_button">@Ajax.ActionLink("В корзину", "AddProductToCart", "Cart", new { item.ProductId, item.CategoryId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "ShowMessageAddToCart" }, new { @class = "text_in_buy_button" })</div>*@
+        <div class="buy_button" onclick="getSelectedColor(this,@item.ProductId, @item.CategoryId)"><span class="text_in_buy_button">В корзину</span> </div>
+        <br />
+    </div>
+}
+
+<script>
+    function getSelectedColor(obj, ProductId, CategoryId) {
+        var ColorId = $(obj).parent().find("select").val();
+
+        if (ColorId != undefined) {
+            $.ajax({
+                url: "@Url.Action("AddProductToCart", "Cart")",
+                data: { ProductId: ProductId, CategoryId: CategoryId, ColorId: ColorId },
+                success: function (data) {
+                    $("#infocart").html(data);
+                    $(obj).parent().children(".product_image").children(".message_add_to_cart").css("display", "block").fadeOut(2500);
+                }
+            });
+        }
+
+        else {
+            $.ajax({
+                url: "@Url.Action("AddProductToCart", "Cart")",
+                data: { ProductId: ProductId, CategoryId: CategoryId },
+                success: function (data) {
+                    $("#infocart").html(data);
+                    $(obj).parent().children(".product_image").children(".message_add_to_cart").css("display", "block").fadeOut(2500);
+                }
+            });
+        }
+    }
+</script>

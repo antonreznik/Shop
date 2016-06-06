@@ -1,0 +1,8 @@
+﻿@model RealShop.Models.SubTypeCosmeticViewModel
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.SubType, Model.SubTypeList, "------------", new {id="subtypelist"})
+        </div>

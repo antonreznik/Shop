@@ -1,0 +1,45 @@
+﻿@model IQueryable<DomainModel.Classes.Care>
+
+@{
+    ViewBag.Title = "ShowCaresInCategory";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Все товары в категории - "@TempData["CategoryName"]"</h2>
+
+@foreach (var item in Model)
+{
+    <div class="Product">
+        <div class="ProductImage">
+            @if (item.ImageData == null)
+            {
+                @: None
+            }
+
+            else
+            {
+                <img width="300" height="200"
+                     src="@Url.Action("GetImage", "Admin", new { item.ProductId, item.CategoryId })" />
+            }
+        </div>
+        <p>Наименование товара - @item.ProductName </p>
+        <p>Цена - @item.Price</p>
+        @*<p>Описание - @item.Description </p>*@
+        <p>Тип - @item.Type </p>
+
+        @Html.ActionLink("Редактировать товар", "EditCare", "Admin", new { item.ProductId }, null) |
+        @Html.ActionLink("Удалить товар", "DeleteProduct", "Admin", new { item.ProductId, item.CategoryId }, null) |
+
+        @Html.Label("Нет в наличии")
+        @if (item.IsAvailable == true)
+        {
+            @Html.CheckBox("IsAvailable" + @item.ProductId, false, new { onchange = "ChangeInCheckBox(this)", data_productId = @item.ProductId, data_categoryId = @item.CategoryId })
+        }
+        else
+        {
+            @Html.CheckBox("IsAvailable" + @item.ProductId, true, new { onchange = "ChangeInCheckBox(this)", data_productId = @item.ProductId, data_categoryId = @item.CategoryId })
+        }
+    </div>
+
+}
+<p style="clear:both">@Html.ActionLink("Вернуться к категориям", "Categories", "Admin")</p>

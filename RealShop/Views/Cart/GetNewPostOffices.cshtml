@@ -1,0 +1,9 @@
+﻿@model RealShop.Models.NewPostOfficesViewModel
+
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.NewPostOffice, Model.NewPostOffices, "Выберите отделение Новой почты", new {id="sel"})
+            @Html.ValidationMessageFor(model => model.NewPostOffice)
+        </div>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/AdminStyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link href="~/Content/Bootstrap.FontAwsome.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="~/Scripts/Admin/AdminScripts.js"></script>
+    
+</head>
+<body class="main_admin_page">
+    <h3>Административная часть для удаления/редактирования товаров и категорий</h3>
+    
+    @if (TempData["message"] != null)
+    { 
+        <div class="MessageForAction">
+            @TempData["message"]
+        </div>
+    }
+    
+    <div>
+        @RenderBody()
+    </div>
+    
+</body>
+</html>

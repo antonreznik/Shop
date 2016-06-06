@@ -1,0 +1,37 @@
+﻿@model IQueryable<DomainModel.Classes.Care>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetCaresToClient</title>
+</head>
+<body>
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <div class="product_image">
+                @if (item.ImageData == null)
+                {
+                    @:None
+                    }
+
+                else
+                {
+                    <img width="150" height="150" src="@Url.Action("GetImage", "Admin", new { item.ProductId, item.CategoryId })" onclick="ShowProductInfo(@item.ProductId, @item.CategoryId)" />
+                }
+            </div>
+            <p>@item.ProductName</p>
+            <p>Цена - @item.Price</p>
+            <div class="buy_button">@Ajax.ActionLink("В корзину", "AddProductToCart", "Cart", new { item.ProductId, item.CategoryId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "ShowMessageAddToCart" }, new { @class = "text_in_buy_button" })</div>
+            <div class="message_add_to_cart">Товар добавлен в корзину</div>
+            <br />
+        </div>
+    }
+</body>
+</html>

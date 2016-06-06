@@ -1,0 +1,80 @@
+﻿@model DomainModel.Classes.AbstractProduct
+@{
+string one_buy_button = "one_buy_button"+ Model.ProductId;
+string one_message = "one_message" + Model.ProductId;
+int currency = 32;
+
+@*<div class="one_product_info">*@
+    <div class="one_message_add_to_cart" id="@one_message">Товар добавлен в корзину</div>
+
+                <div class="one_product_image">
+                    @if (Model.ImageData == null)
+                    { 
+                        @:None
+                    }
+
+                    else
+                    {
+                        <img width="300" height="300" class="img-responsive" alt="@Model.ProductName" src="@Url.Action("GetImage", "Admin", new { Model.ProductId, Model.CategoryId })" />
+                    }
+                </div>
+    
+    
+                if (Model.Colors != null && Model.Colors.Count > 0)
+                {
+                    <div class="colors clearfix">
+                        @foreach (var item in Model.Colors)
+                        {
+                            <div class="one_small_color">
+                                <img width="35" height="35" class="img-responsive" title="@item.ColorName" src="@Url.Action("GetColorImages", "Colors", new {item.ColorId, item.CategoryId})" onclick="getImageOfColor(@item.ColorId)" />
+                            </div>
+                        }
+                    </div>
+                }
+
+                @*<div class="one_message_add_to_cart" id="@one_message">Товар добавлен в корзину</div>*@
+                <p class="name_of_product_on_one_product_page">Наименование: @Model.ProductName</p>
+                <p class="description">Описание: @Model.Description</p>
+                <p class="price_on_one_product_page">Цена - @Convert.ToInt32((Model.Price * currency)) грн</p>    
+    @*</div>*@
+    
+@*<div class="button one_buy_button" id="@one_buy_button">@Ajax.ActionLink("В корзину", "AddProductToCart", "Cart", new { Model.ProductId, Model.CategoryId, ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart" }, new { @class = "text_in_one_buy_button" })</div>*@
+    <div class="button one_buy_button text_in_one_buy_button" id="@one_buy_button" onclick="oneBuyButton(@Model.ProductId, @Model.CategoryId)">В корзину</div>
+}
+<script>
+    @*$(document).ready(function () {
+        $("#@one_buy_button").click(function () {
+            $("#@one_message").css("display", "block").fadeOut(1500);
+        });
+    });*@
+
+    function getImageOfColor(ColorId) {
+        $.ajax({
+            url: "@Url.Action("GetPartialViewOfColor", "Colors")",
+            data: { ColorId: ColorId },
+            success: function (data) {
+                $(".one_product_image").html(data);
+            }
+        });
+    }
+
+    function oneBuyButton(ProductId, CategoryId) {
+        var ColorId = $(".one_big_color").children("img").attr("id");
+        
+        $.ajax({
+            url: "@Url.Action("AddProductToCart", "Cart")",
+            data:{ProductId:ProductId, CategoryId:CategoryId, ColorId:ColorId},
+            success: function (data) {
+                if (@Model.Colors.Count > 0 && ColorId == undefined) {
+                    
+                    $(".one_product_image").html(data);
+                }
+                else {
+                    $("#@one_message").css("display", "block").fadeOut(1500);
+                    $("#infocart").html(data);
+                }
+        }
+    });
+  }
+</script>
+

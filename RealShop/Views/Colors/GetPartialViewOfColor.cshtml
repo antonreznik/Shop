@@ -1,0 +1,15 @@
+﻿@model DomainModel.Classes.Colors.Color
+
+<div class="one_big_color">
+    @if (Model.ImageData == null)
+    {
+        @:None
+                    }
+
+    else
+    {
+        <img id="@Model.ColorId" width="200" height="200" class="img-responsive" src="@Url.Action("GetColorImages", "Colors", new { Model.ColorId })" />
+    }
+    <br />
+    <p class="text-info text-center"><b><i>Цвет - @Model.ColorName</i></b></p>
+</div>

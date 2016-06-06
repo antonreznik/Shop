@@ -1,0 +1,24 @@
+﻿@model RealShop.Models.InfoCartViewModel
+
+<span>Товаров - @Model.TotalQuantityOfProducts</span><br />
+<span>На сумму - @Model.TotalPriceOfProducts грн.</span>
+
+@if (Model.TotalQuantityOfProducts > 0)
+{ 
+    <script>
+        $(document).ready(function () {
+            $("#cart").removeClass("emptycart");
+            $("#cart").addClass("fullcart");
+        });
+    </script>
+}
+
+else
+{
+    <script>
+        $(document).ready(function () {
+            $("#cart").removeClass("fullcart");
+            $("#cart").addClass("emptycart");
+        });
+    </script>
+}

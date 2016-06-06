@@ -1,0 +1,34 @@
+﻿@model RealShop.Models.ModelForCareFilter
+    
+    @using (Ajax.BeginForm("FilterCategoryId3", "Home", new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "product_container_CategoryId3", LoadingElementId = "wait", OnBegin="StartAjaxLoader", OnComplete = "CloseModalAjaxLoader" }))
+    {
+        <div class="inside_filter">
+
+            <div>
+                @Html.CheckBoxFor(model=>model.FaceSkin)
+                @Html.Label("Уход за кожей лица", new { @class = "main_string_in_filter" })
+            </div>
+            
+
+            <div>
+                @Html.CheckBoxFor(model=>model.BodyCare)
+                @Html.Label("Уход за телом", new { @class = "main_string_in_filter" })
+            </div>
+            
+
+            <div>
+                @Html.CheckBoxFor(model=>model.LipsCare)
+                @Html.Label("Уход за губами", new { @class = "main_string_in_filter" })
+            </div>
+            
+
+            <div>
+                @Html.CheckBoxFor(model=>model.HandCare)
+                @Html.Label("Уход за кожей рук", new { @class = "main_string_in_filter" })
+            </div>          
+        </div>
+        <br/>           
+          <input type="submit" class="filterbuttonId3" value="Применить фильтр" />
+                      
+    }
+

@@ -1,0 +1,81 @@
+﻿.main_admin_page
+{
+    min-width:1300px;
+}
+
+.AdminBlock
+{
+    width:10%;
+    height:auto;  
+    border:solid 1px black;
+    margin-left:1%;
+    float:left;
+    background-color:lightgreen; 
+    text-align:center;    
+}
+
+.Product
+{
+    width:30%;
+    height:350px;
+    border:solid 1px black;
+    margin-left:1%;
+    float:left;
+    margin-bottom:1%;
+}
+
+.Categories
+{
+    padding-bottom:1%;
+    border-bottom: dashed 1px black;
+    margin-bottom:1%;
+}
+
+.ProductImage
+{
+    margin-left:10%;
+}
+
+.MessageForAction
+{
+    width:auto;
+    background-color:lightgreen;
+}
+
+textarea
+{
+    width:30%;
+    height: auto;
+}
+
+h3 
+{
+    text-align:center;
+}
+
+.login_form
+{
+    border:solid black 1px;
+    border-radius:5px;
+    width:15%;
+    margin-left:40%;
+    text-align:center;
+    background-color:lightblue;
+}
+
+.enterbutoon_in_login_form 
+{
+    width:80%;
+}
+
+
+#wait
+{  
+    background-image:url(Images/ajax-loader.gif);
+    display:none;
+}
+
+#list
+{
+    width:13%;
+}

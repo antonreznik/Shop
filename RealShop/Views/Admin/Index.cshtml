@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<div class="AdminBlock">
+
+    @Html.ActionLink("Редактирование категорий", "Categories", "Admin")
+
+</div>
+
+<div class="AdminBlock">
+    @Html.ActionLink("Выбор заказов из базы", "GetOrdersFromBase", "Admin")
+</div>

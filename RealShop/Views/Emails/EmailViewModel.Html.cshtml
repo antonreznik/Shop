@@ -1,0 +1,38 @@
+﻿@model RealShop.Models.EmailViewModel
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body> 
+    
+    <span style="font-size:larger; font-weight:bold; color:green">Ваш заказ с ИД @Model.order.OrderId принят в работу.</span>
+    <table style="border:solid black 1px">
+        <tr>
+            @*<th></th>*@
+            <th style="border:solid black 1px; text-align:center">Наименование товара</th>
+            <th style="border:solid black 1px; text-align:center">Количество</th>
+            <th style="border:solid black 1px; text-align:center">Цена</th>
+        </tr>
+        @foreach (var item in Model.order.ProductInOrder)
+        {
+            <tr>
+                <td style="border:solid black 1px; text-align:center">@item.ProductName</td>
+                <td style="border:solid black 1px; text-align:center">@item.Quantity</td>
+                <td style="border:solid black 1px; text-align:center">@item.TotalPrice</td>
+            </tr>
+        }
+
+        <tr>
+            <td style="border:solid black 1px; text-align:center">Итого:</td>
+            <td style="border:solid black 1px; text-align:center">@Model.order.TotalQuantityOfAllParfums</td>
+            <td style="border:solid black 1px; text-align:center">@Model.order.TotalPriceOfAllProducts</td>
+        </tr>
+    </table>
+    <p>Город доставки - @Model.order.NewPostCity</p>
+    <p>Отделение "Новой почты" для доставки - @Model.order.NewPostOffice</p>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,56 @@
+﻿@model IQueryable<DomainModel.Classes.Care>
+
+@foreach (var item in Model)
+{
+    string product_image = "care_image" + item.ProductId;
+    string buy_button = "care_buy_button" + item.ProductId;
+    string message = "care_message" + item.ProductId;
+    string care_class = "care" + item.ProductId;
+    <div class="product">
+        <div class="product_image" id="@product_image">
+            @if (item.ImageData == null)
+            {
+                @:None
+                    }
+
+            else
+            {
+                <img width="150" height="150" src="@Url.Action("GetImage", "Admin", new { item.ProductId, item.CategoryId })" />
+            }
+        </div>
+        <p>@item.ProductName</p>
+        <p>Цена - @item.Price</p>
+        <div class="buy_button" id="@buy_button">@Ajax.ActionLink("В корзину", "AddProductToCart", "Cart", new { item.ProductId, item.CategoryId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart" }, new { @class = "text_in_buy_button" })</div>
+        <div class="message_add_to_cart" id="@message">Товар добавлен в корзину</div>
+        <br />
+
+        <script>
+
+    //скрипт открывает информацию о товаре
+    $(document).ready(function () {
+        $("#@product_image").click(function () {
+
+            $("body").append('<div class="@care_class" id="page_product_info"></div>');
+
+            $.ajax({
+                url: "@Url.Action("GetOneProductInfo", "Home")",
+                data: {ProductId:@item.ProductId, CategoryId:@item.CategoryId},
+            success: function (data) { $(".@care_class").html(data) }
+        });
+
+        $(".@care_class").dialog({
+            width: 700, height: 580, modal: true,
+            close: function (event, ui) {
+                $(".@care_class").remove();
+            }
+        });
+    });
+
+    //функция отображает сообщение "товар добавлен в корзину" при нажатии на кнопку "В корзину"
+    $("#@buy_button").click(function () {
+            $("#@message").css("display", "block").fadeOut(1500);
+        });
+    });
+        </script>
+    </div>
+}

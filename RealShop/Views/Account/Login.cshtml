@@ -1,0 +1,36 @@
+﻿@model RealShop.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="login_form">
+            <div class="editor-label, textbox_in_login_form">
+                @Html.LabelFor(model => model.login)
+            </div>
+            <div class="editor-field, textbox_in_login_form">
+                @Html.EditorFor(model => model.login)
+                @Html.ValidationMessageFor(model => model.login)
+            </div>
+
+            <div class="editor-label, textbox_in_login_form">
+                @Html.LabelFor(model => model.password)
+            </div>
+            <div class="editor-field, textbox_in_login_form">
+                @Html.EditorFor(model => model.password)
+                @Html.ValidationMessageFor(model => model.password)
+            </div>
+            <br />
+
+            <p>
+                <input type="submit" value="Enter" class="enterbutoon_in_login_form" />
+            </p>
+        </div>
+    </fieldset>
+}

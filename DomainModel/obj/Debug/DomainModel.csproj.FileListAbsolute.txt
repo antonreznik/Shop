@@ -1,0 +1,101 @@
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\DomainModel.dll.config
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\DomainModel.dll
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\DomainModel.pdb
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\EntityFramework.dll
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\Ninject.dll
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\EntityFramework.xml
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\bin\Debug\Ninject.xml
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\obj\Debug\DomainModel.dll
+c:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\obj\Debug\DomainModel.pdb
+C:\Users\ASUS\Documents\Visual Studio 2012\Projects\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.dll
+C:\Users\ASUS\Documents\Visual Studio 2012\Projects\RealShop\DomainModel\bin\Debug\AutoMapper.dll
+C:\Users\ASUS\Documents\Visual Studio 2012\Projects\RealShop\DomainModel\bin\Debug\AutoMapper.xml
+C:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\obj\Debug\DomainModel.Migrations.InitialCreate.resources
+C:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\obj\Debug\DomainModel.csproj.GenerateResource.Cache
+C:\Users\ASUS\documents\visual studio 2012\Projects\RealShop\DomainModel\obj\Debug\DomainModel.Migrations.First.resources
+C:\Users\ASUS\Documents\Visual Studio 2012\Projects\RealShop\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\DomainModel.dll.config
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\AutoMapper.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\EntityFramework.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\Ninject.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\AutoMapper.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\EntityFramework.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\Ninject.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\obj\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\obj\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\AutoMapper.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.1\RealShopVer1.1\RealShop\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\DomainModel.dll.config
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\AutoMapper.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\EntityFramework.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\Ninject.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\AutoMapper.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\AutoMapper.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\EntityFramework.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\bin\Debug\Ninject.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\obj\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.2\RealShop\DomainModel\obj\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\DomainModel.dll.config
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\AutoMapper.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\EntityFramework.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\Ninject.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\AutoMapper.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\AutoMapper.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\EntityFramework.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\bin\Debug\Ninject.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\obj\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\ver 1.3\RealShop\DomainModel\obj\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\DomainModel.dll.config
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\AutoMapper.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\EntityFramework.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\Ninject.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\AutoMapper.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\AutoMapper.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\EntityFramework.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\bin\Debug\Ninject.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\obj\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.4\RealShop\DomainModel\obj\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\DomainModel.dll.config
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\AutoMapper.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\EntityFramework.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\Ninject.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\AutoMapper.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\AutoMapper.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\AutoMapper.Net4.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\EntityFramework.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\bin\Debug\Ninject.xml
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\obj\Debug\DomainModel.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\obj\Debug\DomainModel.pdb

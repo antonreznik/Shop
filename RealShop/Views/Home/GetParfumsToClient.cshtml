@@ -1,0 +1,92 @@
+﻿@model IQueryable<DomainModel.Classes.Parfum>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetProductsToClient</title>
+</head>
+<body>
+
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <div class="product_image">
+                @if (item.ImageData == null)
+                {
+                    @:None
+                    }
+
+                else
+                {
+                    <img width="150" height="150" src="@Url.Action("GetImage", "Admin", new { item.ProductId, item.CategoryId })" onclick="ShowProductInfo(@item.ProductId, @item.CategoryId)" />
+                }
+                <div class="message_add_to_cart">Товар добавлен в корзину</div>
+            </div>
+            @{string name = "size_list" + @item.ProductId;}
+            <select id="@name" name="selected_size" onchange="changePriceOnMouseOver(this);">
+                @if (@item.Size25ml)
+                {
+                    <option data-price="@item.Price">
+                        25 ml
+                    </option>
+                }
+
+                @if (@item.Size50ml)
+                {
+                    <option data-price="@item.PriceFor50ml">
+                        50 ml
+                    </option>
+                }
+
+                @if (@item.Size75ml)
+                {
+                    <option data-price="@item.PriceFor75ml">
+                        75 ml
+                    </option>
+                }
+
+                @if (@item.Size100ml)
+                {
+                    <option data-price="@item.PriceFor100ml">
+                        100 ml
+                    </option>
+                }
+            </select>
+
+            <p>@item.ProductName</p>
+            <p id="price">Цена - @item.Price</p>
+            @*<div class="buy_button">@Ajax.ActionLink("В корзину", "AddProductToCart", "Cart", new { item.ProductId, item.CategoryId}, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "ShowMessageAddToCart" }, new { @class = "text_in_buy_button" })</div>*@
+            <div class="buy_button" onclick="BuyButton(@item.ProductId, @item.CategoryId, this)"><span class="text_in_buy_button">В корзину</span></div>
+            <br />
+        </div>
+    }
+</body>
+</html>
+
+<script>
+    //function change price on selected parfum size
+    function changePriceOnMouseOver(obj) {
+        var price = $(obj).find("option:selected").data('price');
+        $(obj).parent().children("#price").html("Цена - " + price);
+    }
+
+    //function sending ajax request when press buy button
+    function BuyButton(productId, categoryId, obj) {
+        var size = $(obj).parent().children("select").find("option:selected").val();
+        $.ajax({
+            url: "@Url.Action("AddProductToCart", "Cart")",
+            data: {ProductId:productId, CategoryId:categoryId, Size:size},
+            success: function (data) {
+            $("#infocart").html(data);
+            $(obj).parent().children(".product_image").children(".message_add_to_cart").css("display", "block").fadeOut(2500);
+        }});
+    };
+</script>
+
+

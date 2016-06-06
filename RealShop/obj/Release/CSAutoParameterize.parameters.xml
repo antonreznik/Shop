@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5016.Smarterasp.net;Initial Catalog=DB_9CFFAE_RealShop;User Id=DB_9CFFAE_RealShop_admin;Password=milan2005;Integrated Security=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Антон\\Программирование\\С\#\\ASP\.NET\.MVC\\RealShop\\Release\\ver\ 1\.5\\RealShop\\RealShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="DB_9CFFAE_RealShop-Web.config Connection String" description="DB_9CFFAE_RealShop Connection String used in web.config by the application to access the database." defaultValue="DB_9CFFAE_RealShop_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Антон\\Программирование\\С\#\\ASP\.NET\.MVC\\RealShop\\Release\\ver\ 1\.5\\RealShop\\RealShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DB_9CFFAE_RealShop']/@connectionString" />
+  </parameter>
+</parameters>

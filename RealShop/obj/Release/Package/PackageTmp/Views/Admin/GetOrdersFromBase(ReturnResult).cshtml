@@ -1,0 +1,138 @@
+﻿@model IQueryable<DomainModel.Classes.Order>
+
+@{
+    ViewBag.Title = "GetOrdersFromBase(ReturnResult)";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+
+<h2>Таблица заказов</h2>
+
+<table class="table-bordered table-condensed">
+    <tr>
+        <th>ID заказа</th>
+        <th>Дата заказа</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>E-mail</th>
+        <th>Город</th>
+        <th>Отделение Новой почты</th>
+        <th>Сумма заказа</th>
+        <th>Товары в заказе</th>
+        <th>Дата отправки клиенту</th>
+        <th>Номер накладной</th>
+        <th>Статус заказа</th>
+    </tr>
+
+     @{
+        string DateOfSendingOrderToClientId = null;
+        string NewPostRefId = null;
+        string buttonId = null;
+        string trId = null;
+        int productsInOrderCounter = 0;
+     }
+
+    @foreach (var item in Model)
+    {
+        DateOfSendingOrderToClientId = "sent" + item.OrderId;
+        NewPostRefId = "NewPostRef" + item.OrderId;
+        buttonId = "button" + item.OrderId;
+        trId = "tr" + item.OrderId;
+        <tr id="@trId">
+                <td>@item.OrderId</td>
+                <td>@item.OrderDate</td>
+                <td>@item.Surname</td>
+                <td>@item.Name</td>
+                <td>@item.Patronymic</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.NewPostCity</td>
+                <td>@item.NewPostOffice</td>
+                <td>@item.TotalPriceOfAllProducts</td>             
+                <td>@Ajax.ActionLink("Товары в заказе", "GetProductsInOrder", "Admin", new { item.OrderId }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "products_info", InsertionMode = InsertionMode.Replace, LoadingElementId = "wait", OnBegin = "AjaxLoader", OnComplete = "ShowProductInOrder" })</td>
+
+            @if (item.OrderState == "New") 
+            {
+                <td>@Html.TextBox("DateOfSendingOrderToClient", item.DateOfSendingOrderToClient, new {id = DateOfSendingOrderToClientId })</td>
+                <td>@Html.TextBox("NewPostReference", item.NewPostRef, new {id = NewPostRefId })</td>
+                <td id="@item.OrderId">@item.OrderState</td>           
+                <td id="@buttonId"><input type="button" value="Обработать заказ" onclick="SetReadonlyAttributes('@DateOfSendingOrderToClientId','@NewPostRefId','@item.OrderId','@buttonId','@trId')" /> </td>
+            }
+
+            else
+            {
+                <td>@item.DateOfSendingOrderToClient</td>
+                <td>@item.NewPostRef</td>
+                <td id="orderState">@item.OrderState</td>
+            }  
+                 
+        </tr>
+        productsInOrderCounter++;
+       }
+</table>
+<div id="dialog"></div>
+<div id="wait"></div>
+<div id="products_info"></div>
+
+
+
+<script>
+    //фнкция устанавливает цвет в зависимости от статуса заказа
+    $(document).ready(function () {
+        $("td:contains('New')").each(function () {
+            $(this).parent().css("background-color", "lightcoral");
+        });
+
+        $("td:contains('Closed')").each(function () {
+            $(this).parent().css("background-color", "lightgreen");
+        });
+    });
+
+    //функция записывает в базу введенные данные о дате отправки заказа и номер накладной Новой почты
+    function SetReadonlyAttributes(sentDateId, newPostRefId, orderId, buttonId, rawId) {
+        var sentDate = $("#" + sentDateId).val();
+        var newPostRef = $("#" + newPostRefId).val();
+
+        $.ajax({
+            url: '@Url.Action("OrderProcessing", "Admin")',
+            data: { sentDate: sentDate, newPostRef: newPostRef, orderId: orderId },
+            success: function (data) {
+                if (data == "Closed") {
+                    $("#" + orderId).html(data);
+                    $("#" + sentDateId).attr("readonly", "readonly").css("background-color", "lightgreen");
+                    $("#" + newPostRefId).attr("readonly", "readonly").css("background-color", "lightgreen");
+                    $("#" + buttonId).hide();
+                    $("#" + rawId).css("background-color", "lightgreen");
+                }
+
+                else {
+                    showDialog(data)
+                }
+            }
+        })
+    };
+
+    //функция отображения диалогового окна если не ввели дату отправки или накладную
+    function showDialog(data) {
+        $("#dialog").dialog({title:"Ошибка", width: 350, height: 150, modal: true}).text(data);
+    };
+
+    //функция отображения товаров в заказе
+    function ShowProductInOrder() {
+        CloseModalAjaxLoader();
+        $("#products_info").dialog({ title: "Товары в заказе", width: 700, height: 350, modal: true })
+    }
+
+    //Функция закрытия ajax-loader по завершении запроса
+    function CloseModalAjaxLoader() {
+        $("#wait").dialog("destroy");
+    };
+
+    //Запуск ajax-loader при старте запроса
+    function AjaxLoader () {
+        $("#wait").dialog({ minWidth: 50, width: 50, minHeight: 60, height: 100, modal: true });
+        $("#wait").dialog("widget").find(".ui-dialog-titlebar").hide();
+    };
+</script>

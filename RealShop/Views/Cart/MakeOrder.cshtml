@@ -1,0 +1,225 @@
+﻿@model RealShop.Models.OrderViewModel
+
+
+@{
+
+    using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "make_order_form", InsertionMode = InsertionMode.Replace, OnBegin = "BeginRequest", OnComplete = "CloseModalAjaxLoaderInForm" }))
+    {
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+
+        <div id="form">
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Surname)
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+            <br/>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <br />
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Patronymic)
+                @Html.ValidationMessageFor(model => model.Patronymic)
+            </div>
+            <br />
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <br />
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <br />
+
+            <!-- Выбор способа доставки -->
+            @*<div class="editor-field">
+                @Html.ValidationMessageFor(model => model.DeliveryMethod)
+                <p>
+                    @Html.RadioButtonFor(model => model.DeliveryMethod, "NewPost", new { id = "newpost" })Доставка новой почтой &nbsp
+                    @Html.RadioButtonFor(model => model.DeliveryMethod, "Courier", new { id = "courier" })Доставка курьером
+                </p>
+            </div>*@
+            
+            <!-- Доставка на отделение Новой почты -->
+        <div id="post" style="display:block">
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.NewPostCity, Model.NewPostCities, "Выберите город доставки", new { id = "new_post_cities" })
+                @Html.ValidationMessageFor(model => model.NewPostCity)
+            </div>
+
+            <div id="new_post_offices" style="display:block"></div>
+            <div class="editor-field" id="new_post_offices_in_city">
+                @Html.ValidationMessageFor(model => model.NewPostOffice)
+            </div>
+        </div>
+
+            <!-- Доставка курьером -->
+        <div id="postman" style="display:none">
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.DeliveryCity, Model.NewPostCities,"Выберите город доставки")
+                @Html.ValidationMessageFor(model => model.DeliveryCity)
+            </div>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DeliveryAdress)
+                @Html.ValidationMessageFor(model => model.DeliveryAdress)
+            </div>
+        </div>
+
+        @*<div class="editor-field">
+            @Html.ValidationMessageFor(model => model.PaymentMethod)
+            <p>
+                @Html.RadioButtonFor(model => model.PaymentMethod, "CardPay", new { id = "cardpay" })Оплата на карту ПриватБанка &nbsp
+                @Html.RadioButtonFor(model => model.PaymentMethod, "PostPay", new { id = "postpay" })Оплата наложенным платежем
+            </p>
+        </div>*@
+            <br />
+        <p>
+            <input type="submit" id="send_order_form" value="Подтвердить заказ" />
+            @*<button type="submit" id="send_order_form">Подтвердить заказ</button>*@
+            @*<div id="wait_in_form" class="wait_in_form" style="height:25px; width:25px"></div>*@
+        </p>
+            
+    </div>
+        
+    </fieldset>
+}
+
+<script>
+
+    $(document).ready(function () {
+        GetOffices_When_Page_Loading();
+        //Добавление атрибутов placeholder
+        $("#Surname").prop('placeholder', 'Введите фамилию');
+        $("#Name").prop('placeholder', 'Введите имя');
+        $("#Patronymic").prop('placeholder', 'Введите отчество');
+        $("#Phone").prop('placeholder', 'Номер телефона');
+        $("#Email").prop('placeholder', 'Введите E-mail');
+        $("#DeliveryAdress").prop('placeholder','Введите адрес доставки');
+
+        //Проверка что выбрано в radio button доставки
+        if ($("#newpost").is(":checked")) {
+            {
+                $("#post").show();
+            }
+        };
+
+        if ($("#courier").is(":checked")) {
+            {
+                $("#postman").show();
+            }
+        };
+
+        //Получаем выбранное значение из списка городов и отправляем 
+        //ajax запрос для получения списка отделений
+        $("#new_post_cities").change(function () {
+            var city = $(this).val();
+
+            if (city != "") {
+                $.ajax({
+                    beforeSend: function(){
+                        $("#new_post_offices").html("Поиск отделений...");
+                    },
+                    url: '@Url.Action("GetNewPostOffices","Cart")',
+                    data: { city: city },
+                    success: function (data) {
+                        $("#new_post_offices").html(data);
+                        $("#new_post_offices").css("display", "block");
+                        
+                    }
+                });
+            }
+
+            else
+            {
+                $("#new_post_offices").css("display", "none");
+            }
+        });
+
+        //Выбор доставки
+        $("#newpost").change(function () {
+            $("#postman").hide();
+            $("#post").show(500);
+        });
+
+        $("#courier").change(function () {
+            $("#post").hide();
+            $("#postman").show(500);
+        });
+
+        
+    });
+
+    //Функция загрузки списка отделений при неуспешной валидации отправки формы
+    function GetOffices_When_Page_Loading() {
+        var city = $("#new_post_cities").val();
+        var postOffice = '@Model.NewPostOffice';
+        if (city != "") {
+            $.ajax({
+                url: '@Url.Action("GetNewPostOffices","Cart")',
+                data: { city: city, PostOffice: postOffice },
+                success: function (data) {
+                    $("#new_post_offices").html(data);
+                    $("#new_post_offices").css("display", "block");                   
+                    Get_Selected_NewPost_Office();
+                }
+            });
+        }
+    };
+
+    //Функция установки аттрибута selected на выбранное отделение 
+    //для отображения его по умолчанию при неуспешной валидации формы
+    function Get_Selected_NewPost_Office() {
+        $('#sel option[value="@Model.NewPostOffice"]').prop('selected', true);
+    };
+
+    //Запуск ajax-loader при старте запроса
+    $("#send_order_form").click(function () {
+        //$("#wait").dialog({ minWidth: 50, width: 50, minHeight: 60, height: 100, modal: true });
+        //$("#wait").dialog("widget").find(".ui-dialog-titlebar").hide();
+        //$("#send_order_form")
+        //    .append("&nbsp<img src=Content/Images/ajax-loader.gif height=19 width=19>");
+        $("#make_order_form").append("<div id=wait_in_form class=wait_in_form_order><img src=Content/Images/ajax-loader.gif height=100 width=100></div>");
+    });
+
+    //Function starts when request begins
+    function BeginRequest() {
+        $("#send_order_form").prop('disabled', true).css("background-color", "lightgrey");
+        $("#Surname").prop('disabled', true).css("background-color", "lightgrey");
+        $("#Name").prop('disabled', true).css("background-color", "lightgrey");
+        $("#Patronymic").prop('disabled', true).css("background-color", "lightgrey");
+        $("#Phone").prop('disabled', true).css("background-color", "lightgrey");
+        $("#Email").prop('disabled', true).css("background-color", "lightgrey");
+        $("#new_post_cities").prop('disabled', true).css("background-color", "lightgrey");
+        $("#sel").prop('disabled', true).css("background-color", "lightgrey");
+        $("#modal_order").css("background-color", "lightgrey");
+
+        //$("#wait_in_form").dialog({
+        //    minWidth: 150,
+        //    width: 150,
+        //    minHeight: 60,
+        //    height: 100, modal: true,
+        //});
+        //$("#wait_in_form").dialog("widget").find(".ui-dialog-titlebar").hide();
+       
+    }
+
+    //Функция закрытия ajax-loader по завершении запроса
+    function CloseModalAjaxLoaderInForm() {
+        //$("#wait").dialog("destroy");
+        //$("#wait_in_form").remove();
+        //$("#send_order_form").prop("disabled", false);
+        $("#modal_order").css("background-color", "white");
+    };
+    
+</script>
+}

@@ -1,0 +1,72 @@
+﻿@model RealShop.Models.FilterParametersForOrdersView
+
+@{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    ViewBag.Title = "GetOrdersFromBase";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Выбор заказов из базы</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="editor-label">
+            @Html.Label("Дата от")
+        </div>
+        <div class="editor-field">         
+            @Html.TextBoxFor(model => model.From, new {id="datepicker", type="text", required="required"})
+            @Html.ValidationMessageFor(model => model.From)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Дата до")
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.To, new { id="datepicker_1", type="text"})
+            @Html.ValidationMessageFor(model => model.To)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Номер телефона")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Номер накладной Новой почты")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NewPostRef)
+            @Html.ValidationMessageFor(model => model.NewPostRef)
+        </div>
+
+        <p>
+            <input type="submit" value="Выбрать" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+  $(function() {
+      $("#datepicker").datepicker({
+          dateFormat: 'yy-mm-dd'
+      });
+
+      $("#datepicker_1").datepicker({
+          dateFormat: 'yy-mm-dd'
+      });
+  });
+</script>

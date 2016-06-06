@@ -1,0 +1,18 @@
+﻿@model RealShop.Models.OrderViewModel
+<div class="text_confirm_order">
+<span>Ваш заказ принят в обработку.</span> <br />
+<span>Уведомление отправлено на Ваш e-mail: @Model.Email</span>
+</div>
+<script>
+    //Изменение высоты диалогового окна в котором выводится сообщение
+    //$("#make_order_form").css({ "height": "100px", });
+
+    //Закрываем окно корзины после успешного запроса на отправку формы    
+    //$("#in_cart").dialog("close");
+
+    //Обновлпение корзины на главной странице
+    $.ajax({
+        url: '@Url.Action("ShowCartOnPage","Cart")',
+        success: function (data) { $("#infocart").html(data) }
+    });
+</script>

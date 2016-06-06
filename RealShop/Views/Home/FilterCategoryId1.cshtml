@@ -1,0 +1,39 @@
+﻿@model RealShop.Models.ModelForParfumFilter
+
+@using (Ajax.BeginForm("FilterCategoryId1", "Home", new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "product_container_CategoryId1", LoadingElementId = "wait", OnBegin="StartAjaxLoader", OnComplete = "CloseModalAjaxLoader" }))
+{
+    <div class="inside_filter">
+        <div>
+            @Html.CheckBoxFor(model => model.IsMen)
+            @Html.Label("Мужские")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.IsWomen)
+            @Html.Label("Женские")
+        </div>
+        <hr />
+        <div>
+            Объем:<br />
+            @Html.CheckBoxFor(model => model.Size25)
+            @Html.Label("25 мл")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Size50)
+            @Html.Label("50 мл")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Size75)
+            @Html.Label("75 мл")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Size100)
+            @Html.Label("100 мл")
+        </div>
+    </div>
+    <br/>
+    <input type="submit" class="filterbutton" value="Применить фильтр" />
+}

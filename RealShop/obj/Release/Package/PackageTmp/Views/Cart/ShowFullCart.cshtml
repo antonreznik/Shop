@@ -1,0 +1,127 @@
+﻿@model RealShop.Models.CartViewModel
+
+
+@if (Model == null || Model.InfoCart.TotalQuantityOfProducts == 0)
+{
+    @*<script>
+        $(".in_cart").css({ "height": "100px", });
+    </script>*@
+    <p class="text_in_empty_cart">Ваша корзина пуста</p>   
+}
+
+
+else
+{
+    <table class="cart_table table-responsive">
+        <tr>
+            <th></th>
+            <th>Наименование товара</th>
+            <th>Количество</th>
+            <th>Добавить</th>
+            <th>Удалить</th>
+            <th>Цена</th>
+        </tr>
+        
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td style="width: 1%">
+                    @if (item.obj.ImageData == null)
+                    {
+                        @:None
+                    }
+
+                    else
+                    {
+                        <img width="75" height="75" src="@Url.Action("GetImage", "Admin", new { item.obj.ProductId, item.obj.CategoryId })" />
+                    }
+                </td>
+                <td>
+                    @item.obj.ProductName  
+                    <br />
+                    <b>@item.Size 
+                       @if (item.Color != null) 
+                       { 
+                           @item.Color.ColorName
+                       }
+                    </b>
+
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                @if (item.Color != null)
+                {
+                    <td>
+                        <div class="plus_in_cart">@Ajax.ActionLink("+", "AddProductToCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size, item.Color.ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                    </td>
+                    <td>
+                        <div class="minus_in_cart">@Ajax.ActionLink("-", "RemoveProductFromCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size, item.Color.ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                    </td>
+                }
+
+                else
+                {
+                    <td>
+                        <div class="plus_in_cart">@Ajax.ActionLink("+", "AddProductToCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                    </td>
+                    <td>
+                        <div class="minus_in_cart">@Ajax.ActionLink("-", "RemoveProductFromCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                    </td>
+                }
+                
+<td>@item.TotalPrice</td>
+
+        </tr>
+        }
+
+        <tr class="lastraw">
+            <td></td>
+            <td>Итого:</td>
+            <td>@Model.InfoCart.TotalQuantityOfProducts</td>
+            <td></td>
+            <td></td>
+            <td>@Model.InfoCart.TotalPriceOfProducts</td>
+        </tr>
+    </table>
+    <div class="make_order_button" id="make_order">Оформить заказ</div>
+
+    
+
+    <script>
+    function UpdateFullCart() {
+        $.ajax({
+            url: "@Url.Action("ShowFullCart", "Cart")",
+            success: function (data) {
+                $("#in_cart").html(data);           
+            }
+            })
+        }
+        
+        $("#make_order").click(function () {
+            //$("body").append('<div id="make_order_form"></div>')
+            $("#in_cart_modal").modal("hide");
+            $("#make_order_form1").modal();
+            $.ajax({
+                url: "@Url.Action("MakeOrder", "Cart")",
+            success: function (data) { $("#make_order_form").html(data) }
+        });
+           
+        //$("#make_order_form").dialog({
+        //    width: 1000,
+        //    height: 350,
+        //    modal: true,
+        //    close: function (event, ui) {
+        //        $("#make_order_form").remove();
+        //    }
+        //});
+
+    });
+
+    //Выбор доставки
+    $("#newpost").change(function () {
+        alert("Почта")
+    });
+
+    </script>
+}

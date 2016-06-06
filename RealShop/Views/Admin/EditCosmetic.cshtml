@@ -1,0 +1,149 @@
+﻿@model RealShop.Models.CosmeticViewModel
+
+@{
+    ViewBag.Title = "EditCosmetic";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Редактирование косметики - @Model.ProductName</h2>
+
+@using (Html.BeginForm("EditCosmetic", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductId)
+            @Html.ValidationMessageFor(model => model.ProductId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductName)
+            @Html.ValidationMessageFor(model => model.ProductName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Type, Model.TypeList, "--------------", new { id = "cosmetic_type" })
+            @Html.ValidationMessageFor(model => model.Type)
+        </div>
+
+        <div id="subtype" style="display:none">12345</div>
+        <div class="editor-field">
+            @Html.ValidationMessageFor(model => model.SubType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CategoryId)
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+        <br />
+
+        <div class="editor-label"> Основное изображение товара </div>
+        <div class="editor-field">
+            @if (Model.ImageData == null)
+            {
+                @: None
+            }
+
+            else
+            {
+                <img width="200" height="200" src="@Url.Action("GetImage", "Admin", new { Model.ProductId, Model.CategoryId })" />
+            }
+
+            <div>Загрузить основное изображение товара <input type="file" name="Image" /> </div>
+        </div>
+        <br />
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Добавить цвет", "AddColor", "Colors", new { Model.ProductId, Model.CategoryId }, null) |
+    @Html.ActionLink("Редактировать цвета", "AdminGetAllColorsFromProduct", "Colors", new { Model.ProductId, Model.CategoryId, Model.ProductName }, null)
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index") 
+</div>
+
+<script>
+    $(document).ready(function () {
+        GetSubTypes_When_Page_Loading();
+    });
+
+    //Функция загрузки списка подтипов при неуспешной валидации отправки формы
+    function GetSubTypes_When_Page_Loading() {
+        var type = '@Model.Type';
+
+        if (type != "") {
+            $.ajax({
+                url: '@Url.Action("GetSubTypesCosmetic", "Admin")',
+                data: { type: type },
+                success: function (data) {                
+                    $("#subtype").html(data);
+                    $("#subtype").css("display", "block");
+                    GetSubtype();
+                }
+            });
+        }
+    };
+
+    //Функция установки аттрибута selected на выбранный подтип
+    //для отображения его по умолчанию при неуспешной валидации формы
+
+    function GetSubtype() {
+        $('#subtypelist option[value="@Model.SubType"]').prop('selected', true);
+    };
+
+
+    //Получаем выбранное значение из списка косметики и отправляем
+    //ajax запрос для получения списка подтипов
+    $("#cosmetic_type").change(function () {
+        var type = $(this).val();
+
+        if (type != "") {
+            $.ajax({
+                url: '@Url.Action("GetSubTypesCosmetic", "Admin")',
+                data: { type: type },
+                success: function (data) {
+                    $("#subtype").css("display", "block");
+                    $("#subtype").html(data);
+                }
+            });
+        }
+
+        else {
+            $("#subtype").css("display", "none");
+        }
+    });
+
+    
+</script>
+

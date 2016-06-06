@@ -1,0 +1,15 @@
+﻿@model RealShop.Models.CategoryViewModelForDropDownList
+
+@{
+    ViewBag.Title = "ChangeCategoryInProduct";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Выберите категорию в которую необходимо переместить товар</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownListFor(m=>m.CategoryId,Model.List,"------------")
+    <p>
+            <input type="submit" value="Save" />
+    </p>
+}

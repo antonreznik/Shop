@@ -1,0 +1,35 @@
+﻿@model IQueryable<DomainModel.Classes.Parfum>
+
+@{
+    ViewBag.Title = "Все товары в категории";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Все товары в категории - "@TempData["CategoryName"]"</h2>
+
+@foreach (var item in Model)
+{ 
+    <div class="Product">
+        <div class="ProductImage">
+            @if (item.ImageData == null)
+            { 
+                @: None
+            }
+
+            else
+            {
+                <img width="300" height="200" 
+                src="@Url.Action("GetImage", "Admin", new { item.ProductId, item.CategoryId })" />
+            }
+        </div>
+        <p>Наименование товара - @item.ProductName </p>
+        <p>Цена - @item.Price</p>
+        @*<p>Описание - @item.Description </p>*@
+        <p>Размер - @item.Size </p>
+        
+        @Html.ActionLink("Редактировать товар", "EditProduct", "Admin", new { item.ProductId }, null) |
+        @Html.ActionLink("Удалить товар", "DeleteProduct", "Admin", new {item.ProductId, item.CategoryId}, null) |     
+    </div>
+        
+}
+<p style="clear:both">@Html.ActionLink("Вернуться к категориям","Categories","Admin")</p>

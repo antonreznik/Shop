@@ -1,0 +1,43 @@
+﻿@model IQueryable<DomainModel.Classes.Colors.Color>
+
+@{
+    ViewBag.Title = "GetAllColorsFromCategory";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+    int ProductId = 0;
+ }
+
+<h2>Все цвета продукта - @TempData["CategoryName"]</h2>
+
+@foreach (var item in Model)
+{
+    ProductId = item.ProductId;
+    <div class="Product">
+        <div class="ProductImage">
+            @if (item.ImageData == null)
+            {
+                @: None
+            }
+
+            else
+            {
+                <img width="200" height="200"
+                     src="@Url.Action("GetColorImages", "Colors", new { item.ColorId })" />
+            }
+        </div>
+        <p>Название цвета - @item.ColorName </p>
+
+        @Html.ActionLink("Редактировать цвет", "EditColor", "Colors", new { item.ColorId }, null) |
+        @Html.ActionLink("Удалить цвет", "DeleteColor", "Colors", new { item.ColorId }, null) |
+        @Html.Label("Нет в наличии")
+        @if (item.IsAvailable == true)
+        {
+            @Html.CheckBox("IsAvailable" + @item.ColorId, false, new { onchange = "ChangeColorAvailabilityInCheckBox(this)", data_productId = @item.ColorId })
+        }
+        else
+        {
+            @Html.CheckBox("IsAvailable" + @item.ColorId, true, new { onchange = "ChangeColorAvailabilityInCheckBox(this)", data_productId = @item.ColorId })
+        }
+    </div>
+
+}
+<p style="clear:both">@Html.ActionLink("Back to product", "EditCosmetic", "Admin", new {ProductId}, null)</p>
