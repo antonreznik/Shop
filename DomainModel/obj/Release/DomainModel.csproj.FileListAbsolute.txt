@@ -83,3 +83,20 @@ D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\obj\Release\DomainModel.csprojResolveAssemblyReference.cache
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\obj\Release\DomainModel.dll
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\Release\ver 1.5\RealShop\DomainModel\obj\Release\DomainModel.pdb
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\DomainModel.dll.config
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\DomainModel.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\DomainModel.pdb
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\AutoMapper.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\AutoMapper.Net4.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\EntityFramework.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\Ninject.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\AutoMapper.pdb
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\AutoMapper.xml
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\AutoMapper.Net4.pdb
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\EntityFramework.xml
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\bin\Release\Ninject.xml
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\obj\Release\DomainModel.csprojResolveAssemblyReference.cache
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\obj\Release\DomainModel.dll
+C:\Users\AntonRez\Documents\HomeTask\GitRepo\S\DomainModel\obj\Release\DomainModel.pdb
