@@ -3,7 +3,7 @@
     /*background-image:url(Images/MainPageGreen.jpg);*/
     background-color:black;
     min-width:1300px;
-    max-width:1400px;	
+    max-width:1400px;
 }
 
 .header 
@@ -105,12 +105,18 @@
     margin-top:2%;
     margin-right:2%;
 }
-.category_list
+.category_list>a
 {
     font-size:1em;
-    /*font-family:'Comic Sans MS';*/
+    font-family:'Comic Sans MS';
     font-family:Arial;
+    color:black;
 }
+
+.nav-tabs{
+    background-color:silver;
+}
+
 
 .total_container
 { 
@@ -122,6 +128,7 @@
     width:16.5%;
     float:left;
     margin-top:2.3%;      
+    
 }
 
     .inside_filter
@@ -130,6 +137,7 @@
         border:solid black 1px;
         border-radius:5px;
         padding-left:2%;
+        box-shadow:0px 0px 10px black;  
     }
 
     hr
