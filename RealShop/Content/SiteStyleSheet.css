@@ -113,10 +113,10 @@
     color:black;
 }
 
-.nav-tabs{
+.nav-tabs
+{
     background-color:silver;
 }
-
 
 .total_container
 { 
@@ -127,18 +127,24 @@
 {
     width:16.5%;
     float:left;
-    margin-top:2.3%;      
-    
+    margin-top:2.3%;  
+    margin-left:2%;     
 }
 
     .inside_filter
     {
-        font-size:0.75em;
+        font-size:small;
         border:solid black 1px;
         border-radius:5px;
+        padding-top:3%;
+        padding-bottom:5%;
         padding-left:2%;
         box-shadow:0px 0px 10px black;  
     }
+        .filter_button_wrapper
+        {
+            margin-left:10%;
+        }
 
     hr
     {
@@ -192,7 +198,7 @@
     left:12.5%;
     cursor:pointer;   
 }
-    .buy_button:hover, .one_buy_button:hover, .get_all_products_button:hover
+    .buy_button:hover, .one_buy_button:hover, .get_all_products_button:hover, .filter_button_wrapper:hover
     {
         background-color:#80EA69;
     }
@@ -254,7 +260,7 @@
 .emptycart
 {
     position:relative;
-    margin-top:-3.2%;
+    margin-top:-3.1%;
     margin-left:75%;
     width:50px;
     height:38px;
@@ -268,7 +274,7 @@
 .fullcart
 {
     position:relative;
-    margin-top:-3.2%;
+    margin-top:-3.1%;
     margin-left:75%;
     width:50px;
     height:38px;
@@ -280,11 +286,11 @@
 .infocart
 {
     position:relative;
-    margin-top:-3.2%;
+    margin-top:-3.1%;
     margin-left:80%;
     width:200px;
     height:50px;
-    font-size:0.8em;
+    font-size:small;
     font-weight:bold;
     color:green;
 }
@@ -414,7 +420,6 @@
 }
 
 
-
 .editor-field 
 {
     font-size:16px;
@@ -500,6 +505,7 @@ a:focus, a:hover, a:active
     display:block;  
     font-size:medium;
     padding-top:3%;
+    color:black;
 }
 
 
