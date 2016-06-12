@@ -19,6 +19,7 @@
     @*<link href="~/Content/Bootstrap.FontAwsome.css" rel="stylesheet" />*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    @*<link href="~/Content/materialize/css/materialize.css" rel="stylesheet" />*@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
@@ -162,26 +163,30 @@
             $(".about_production").click(function () {
                 //$("#about_production").dialog({width:800, height:500, modal:true})
                 $("#about_production").modal();
-            })
+            });
 
             //Открываем информацию "О доставке"
             $(".delivery_info").click(function () {
                 //$("#delivery_info").dialog({ width: 800, height: 500, modal: true })
                 $("#delivery_info").modal();
-            })
+            });
 
             //Открываем информацию "Оформление заказа"
             $(".make_order_info").click(function () {
                 //$("#make_order_info").dialog({ width: 800, height: 500, modal: true })
                 $("#make_order_info").modal();
-            })
+            });
 
             //Открываем информацию "Контакты"
             $(".contacts").click(function () {
                 //$("#contacts").dialog({ width: 800, height: 500, modal: true })
                 $("#contacts").modal();
-            })
-            $("#tabs").tabs();
+            });
+
+            //$("#tabs").tabs();
+            //$(".nav-tabs a").click(function () {
+            //    $(this).tab('show');
+            //});
         });
 
         //функция открывает информацию о товаре

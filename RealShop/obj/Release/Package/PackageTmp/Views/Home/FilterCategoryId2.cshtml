@@ -4,7 +4,7 @@
 {
     <div class="inside_filter">
         @*//------------------------------------------//
-        //Для глаз//*@
+            //Для глаз//*@
         <div>
             @Html.CheckBoxFor(model => model.Eyes, new { id = "for_eyes" })
             @Html.Label("Для глаз", new { @class = "main_string_in_filter" })
@@ -33,7 +33,7 @@
         </div>
 
         @*//---------------------------------------//
-        //Для губ//*@
+            //Для губ//*@
         <div>
             @Html.CheckBoxFor(model => model.Lips, new { id = "for_lips" })
             @Html.Label("Для губ", new { @class = "main_string_in_filter" })
@@ -57,7 +57,7 @@
         </div>
 
         @*//---------------------------------------//
-        //Тональные средства//*@
+            //Тональные средства//*@
         <div>
             @Html.CheckBoxFor(model => model.Tonic, new { id = "tonic" })
             @Html.Label("Тональные средства", new { @class = "main_string_in_filter" })
@@ -91,7 +91,7 @@
         </div>
 
         @*//---------------------------------------//
-        //Для ногтей//*@
+            //Для ногтей//*@
         <div>
             @Html.CheckBoxFor(model => model.Nails, new { id = "nail" })
             @Html.Label("Для ногтей", new { @class = "main_string_in_filter" })
@@ -110,19 +110,20 @@
             <div>
                 @Html.CheckBoxFor(model => model.Nail_Polish_Remover, new { id = "polish_remover" })
                 @Html.Label("Жидкость для снятия лака")
-            </div>           
+            </div>
         </div>
+        <br />
+        <input type="submit" class="btn filter_button_wrapper" value="Применить фильтр" />
     </div>
     <br />
-             <input type="submit" class="filterbuttonId2" value="Применить фильтр" />
 }
 <br />
-<div style="width:200px; height:200px; border:solid 1px black">
+<div style="width:200px; height:200px; margin-left:-1%; border:solid 1px black">
     <script type="text/javascript">
-    google_ad_client = "ca-pub-8729743339691209";
-    google_ad_slot = "7776744574";
-    google_ad_width = 200;
-    google_ad_height = 200;
+        google_ad_client = "ca-pub-8729743339691209";
+        google_ad_slot = "7776744574";
+        google_ad_width = 200;
+        google_ad_height = 200;
     </script>
     <!-- Second -->
     <script type="text/javascript"
@@ -130,63 +131,62 @@
     </script>
 </div>
 
-        <script>
+<script>
+    //Отображение блоков с подтипами при выборе чекбокса
+    //Для глаз
+    $("#for_eyes").change(function () {
+        if ($("#for_eyes").is(":checked")) {
+            $("#eyes_subtypes").slideDown();
+        }
 
-            //Отображение блоков с подтипами при выборе чекбокса
-            //Для глаз
-            $("#for_eyes").change(function () {
-                if ($("#for_eyes").is(":checked")) {
-                    $("#eyes_subtypes").slideDown();
-                }
+        else {
+            $("#eyes_subtypes").slideUp();
+            $("#mascara").prop("checked", false);
+            $("#liner").prop("checked", false);
+            $("#eyeliner").prop("checked", false);
+            $("#eye_shadow").prop("checked", false);
+        }
+    });
+    //для губ
+    $("#for_lips").change(function () {
+        if ($("#for_lips").is(":checked")) {
+            $("#lips_subtypes").slideDown();
+        }
 
-                else {
-                    $("#eyes_subtypes").slideUp();
-                    $("#mascara").prop("checked", false);
-                    $("#liner").prop("checked", false);
-                    $("#eyeliner").prop("checked", false);
-                    $("#eye_shadow").prop("checked", false);
-                }
-            });
-            //для губ
-            $("#for_lips").change(function () {
-                if ($("#for_lips").is(":checked")) {
-                    $("#lips_subtypes").slideDown();
-                }
+        else {
+            $("#lips_subtypes").slideUp();
+            $("#lipstick").prop("checked", false);
+            $("#lip_gloss").prop("checked", false);
+            $("#lip_liner").prop("checked", false);
+        }
+    });
+    //Тональные средства
+    $("#tonic").change(function () {
+        if ($("#tonic").is(":checked")) {
+            $("#tonic_subtypes").slideDown();
+        }
 
-                else {
-                    $("#lips_subtypes").slideUp();
-                    $("#lipstick").prop("checked", false);
-                    $("#lip_gloss").prop("checked", false);
-                    $("#lip_liner").prop("checked", false);                  
-                }
-            });
-            //Тональные средства
-            $("#tonic").change(function () {
-                if ($("#tonic").is(":checked")) {
-                    $("#tonic_subtypes").slideDown();
-                }
+        else {
+            $("#tonic_subtypes").slideUp();
+            $("#foundation").prop("checked", false);
+            $("#powder").prop("checked", false);
+            $("#correctors").prop("checked", false);
+            $("#makeup_base").prop("checked", false);
+            $("#blusher").prop("checked", false);
+        }
+    });
 
-                else {
-                    $("#tonic_subtypes").slideUp();
-                    $("#foundation").prop("checked", false);
-                    $("#powder").prop("checked", false);
-                    $("#correctors").prop("checked", false);
-                    $("#makeup_base").prop("checked", false);
-                    $("#blusher").prop("checked", false);
-                }
-            });
+    //Для ногтей
+    $("#nail").change(function () {
+        if ($("#nail").is(":checked")) {
+            $("#nail_subtypes").slideDown();
+        }
 
-            //Для ногтей
-            $("#nail").change(function () {
-                if ($("#nail").is(":checked")) {
-                    $("#nail_subtypes").slideDown();
-                }
-
-                else {
-                    $("#nail_subtypes").slideUp();
-                    $("#nail_polish").prop("checked", false);
-                    $("#nail_care").prop("checked", false);
-                    $("#polish_remover").prop("checked", false);
-                }
-            });
-        </script>
+        else {
+            $("#nail_subtypes").slideUp();
+            $("#nail_polish").prop("checked", false);
+            $("#nail_care").prop("checked", false);
+            $("#polish_remover").prop("checked", false);
+        }
+    });
+</script>
