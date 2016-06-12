@@ -12,7 +12,6 @@ namespace RealShop.Models.Colors
         [HiddenInput(DisplayValue=false)]
         public int ColorId { get; set; }
 
-        [Required(ErrorMessage="Введите название и тон цвета")]
         public string ColorName { get; set; }
 
         public byte[] ImageData { get; set; }

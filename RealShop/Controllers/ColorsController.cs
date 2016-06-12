@@ -24,27 +24,29 @@ namespace RealShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddColor(ColorViewModel color, HttpPostedFileBase Image)
+        public ActionResult AddColor(ColorViewModel color, IEnumerable<HttpPostedFileBase> Images)
         {
-            
+
             if (ModelState.IsValid)
             {
-                if (Image != null)
+                if (Images != null)
                 {
-                    color.ImageMimeType = Image.ContentType;
-                    color.ImageData = new byte[Image.ContentLength];
-                    Image.InputStream.Read(color.ImageData, 0, Image.ContentLength);
+                    foreach (var item in Images)
+                    {
+                        Color newColor = new Color();
+                        newColor.CategoryId = color.CategoryId;
+                        newColor.ProductId = color.ProductId;
+                        newColor.ColorName = item.FileName.Substring(0, item.FileName.IndexOf("."));
+                        newColor.ImageData = new byte[item.ContentLength];
+                        newColor.ImageMimeType = item.ContentType;
+                        newColor.IsAvailable = true;
+                        item.InputStream.Read(newColor.ImageData, 0, item.ContentLength);
+                        colorRepo.SaveColor(newColor);
+                        TempData["message"] = String.Format("Цвета добавлены");
+                    }
                 }
-            
-                Color newColor = new Color();
-                newColor.CategoryId = color.CategoryId;
-                newColor.ProductId = color.ProductId;
-                newColor.ColorName = color.ColorName;
-                newColor.ImageData = color.ImageData;
-                newColor.ImageMimeType = color.ImageMimeType;
-                colorRepo.SaveColor(newColor);
-                TempData["message"] = String.Format("Цвет {0} добавлен", newColor.ColorName);
-                return RedirectToAction("EditCosmetic", "Admin", new {color.ProductId});
+
+                return RedirectToAction("EditCosmetic", "Admin", new { color.ProductId });
             }
 
             else
