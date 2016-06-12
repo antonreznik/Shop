@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="keywords" content="KIKO, KIKO Make Up Milano, KIKO MILANO, косметика KIKO, KIKO cosmetics, KIKO интернет магазин, KIKO где купить косметику, KIKO в Украине, купить KIKO, купить косметику KIKO, косметика КИКО, косметика KIKO купить, KIKO блеск, KIKO тушь, KIKO помада, KIKO косметика купить, KIKO купить" />
     <meta name="description" content="Интернет-магазин профессиональной косметики Kiko в Украине предлагает широкий ассортимент косметики" />
-    
+
     @*<meta property="fb:admins" content="100008875744913" />
-    <meta property="og:site_name" content="Итальянская косметика Kiko" />
-    <meta property="fb:app_id" content="580350488787299" />*@
+        <meta property="og:site_name" content="Итальянская косметика Kiko" />
+        <meta property="fb:app_id" content="580350488787299" />*@
     <meta property="og:url" content="http://levisage.com.ua" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Итальянская косметика Kiko" />
@@ -24,7 +24,7 @@
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    
+
     <title>Косметика Kiko в Украине|косметика Kiko купить|косметика</title>
 </head>
 <body class="mainpage">
@@ -39,86 +39,83 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
     <h1 hidden>Косметика Kiko</h1>
-    <header class="header"> 
-        <div style="width:728px; height:90px; position:absolute">
-    <script type="text/javascript">
-        google_ad_client = "ca-pub-8729743339691209";
-        google_ad_slot = "1803616178";
-        google_ad_width = 728;
-        google_ad_height = 90;
-        </script>
-        <!-- Third -->
-        <script type="text/javascript"
-                src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-        </div>
-        <div class="menu about_production">О продукции</div>  
-        <div id="about_production" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal">x</button>
-                        <p class="modal-title">О продукции</p>
+    <header class="header">
+        @*<div style="width:728px; height:90px; position:absolute">
+            <script type="text/javascript">
+                google_ad_client = "ca-pub-8729743339691209";
+                google_ad_slot = "1803616178";
+                google_ad_width = 728;
+                google_ad_height = 90;
+                </script>
+                <!-- Third -->
+                <script type="text/javascript"
+                        src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+                </div>*@
+        <div class="menu_wrapper">
+            <div class="menu about_production">О продукции</div>
+            <div id="about_production" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">x</button>
+                            <p class="modal-title">О продукции</p>
+                        </div>
+                        <div class="modal-body">@Html.Action("AboutProduction", "Home")</div>
+                        <div class="modal-footer"></div>
                     </div>
-                    <div class="modal-body">@Html.Action("AboutProduction", "Home")</div>
-                    <div class="modal-footer"></div>
-                </div>
-            </div>      
-        </div>
-            
-        <div class="menu delivery_info">Доставка</div>
-        <div id="delivery_info" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal">x</button>
-                        <p class="modal-title">Доставка</p>
-                    </div>
-                    <div class="modal-body">@Html.Action("DeliveryInfo", "Home")</div>
-                    <div class="modal-footer"></div>
                 </div>
             </div>
-        </div>
-        @*<div id="delivery_info" style="display:none">@Html.Action("DeliveryInfo","Home")</div>*@
-        
-        <div class="menu make_order_info">Оформление заказа</div>      
-        <div id="make_order_info" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal">x</button>
-                        <p class="modal-title">Оформление заказа</p>
-                    </div>
-                    <div class="modal-body">@Html.Action("MakeOrderInfo", "Home")</div>
-                    <div class="modal-footer"></div>
-                </div>
-            </div>
-        </div>
-        @*<div id="make_order_info" style="display:none">@Html.Action("MakeOrderInfo","Home")</div>*@
-        
-        <div class="menu contacts">Контакты</div>
-        <div id="contacts" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal">x</button>
-                        <p class="modal-title">Контакты</p>
-                    </div>
-                    <div class="modal-body">@Html.Action("Contacts", "Home")</div>
-                    <div class="modal-footer"></div>
-                </div>
-            </div>
-        </div>
-        @*<div id="contacts" style="display:none">@Html.Action("Contacts","Home")</div>*@
 
-        <div class="aloemain"></div>
+            <div class="menu delivery_info">Доставка</div>
+            <div id="delivery_info" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">x</button>
+                            <p class="modal-title">Доставка</p>
+                        </div>
+                        <div class="modal-body">@Html.Action("DeliveryInfo", "Home")</div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu make_order_info">Оформление заказа</div>
+            <div id="make_order_info" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">x</button>
+                            <p class="modal-title">Оформление заказа</p>
+                        </div>
+                        <div class="modal-body">@Html.Action("MakeOrderInfo", "Home")</div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu contacts">Контакты</div>
+            <div id="contacts" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">x</button>
+                            <p class="modal-title">Контакты</p>
+                        </div>
+                        <div class="modal-body">@Html.Action("Contacts", "Home")</div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="aloemain"></div>*@
     </header>
 
-    <div class="content">      
-        @RenderBody()    
+    <div class="content">
+        @RenderBody()
     </div>
-   
-    @*<div id="page_product_info"></div>*@
+
     <div id="single_product_page" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -189,16 +186,17 @@
 
         //функция открывает информацию о товаре
         function ShowProductInfo(productId, categoryId) {
-            
+
             $.ajax({
                 url: "@Url.Action("GetOneProductInfo", "Home")",
-                data: {ProductId:productId, CategoryId:categoryId},
+                data: { ProductId: productId, CategoryId: categoryId },
                 success: function (data) {
                     $("#single_product_page").modal();
-                    $("#page_product_info1").html(data) 
-                    //$("#page_product_info").html(data)                   
+                    $("#page_product_info1").html(data)
+                    //$("#page_product_info").html(data)
                     //$("#page_product_info").dialog({ width: 1000, height: 450, modal: true });
-            }});
+                }
+            });
         };
 
         //функция отображает сообщение "товар добавлен в корзину" при нажатии на кнопку "В корзину"
@@ -206,7 +204,7 @@
             $(this).parent().parent().children(".product_image").children(".message_add_to_cart").css("display", "block").fadeOut(2500);
         };
 
-       
+
         //Функция закрытия ajax-loader по завершении запроса
         function CloseModalAjaxLoader(obj) {
             $("#wait").dialog("destroy");
@@ -221,15 +219,15 @@
     </script>
 
     <script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-73132537-1', 'auto');
-    ga('send', 'pageview');
+        ga('create', 'UA-73132537-1', 'auto');
+        ga('send', 'pageview');
 
     </script>
 

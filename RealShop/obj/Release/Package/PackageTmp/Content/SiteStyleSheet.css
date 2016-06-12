@@ -1,6 +1,7 @@
 ﻿.mainpage
 {
-    background-image:url(Images/MainPageGreen.jpg);
+    /*background-image:url(Images/MainPageGreen.jpg);*/
+    background-color:black;
     min-width:1300px;
     max-width:1400px;	
 }
@@ -9,9 +10,21 @@
 {
     width:90%;
     height:200px;
-    background-color:white;
+    background-color:none;
     margin-left:5%;
     margin-right:5%;
+    opacity:1;
+    background-image:url(Images/KIKO_logo.png);
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.menu_wrapper
+{
+    width: 80%;
+    position:relative;
+    top:80%;
+    left:18%;
 }
 
 .aloemain
@@ -28,16 +41,17 @@
 {
     height:15%;
     line-height:200%;
-    width:14%;
+    width:18%;
     background-color:lightgray;
     border-radius:5px 5px 5px 5px;
     text-align:center;
     font-size:1em;
-    font-family:'Comic Sans MS';
+    /*font-family:'Comic Sans MS';*/
+    font-family:Arial;
     float:left;
     margin-left:0.5%;
     margin-right:1%;
-    margin-top:13%;
+    /*margin-top:13%;*/
     display:block;
     cursor:pointer;
 }
@@ -84,17 +98,18 @@
 .content
 {
     position:relative;
-    width:90%;
+    width:96%;
     border:solid 1px white;
     background-color:white;
-    margin-left:5%;
+    margin-left:2%;
     margin-top:2%;
-    margin-right:5%;
+    margin-right:2%;
 }
 .category_list
 {
     font-size:1em;
-    font-family:'Comic Sans MS';
+    /*font-family:'Comic Sans MS';*/
+    font-family:Arial;
 }
 
 .total_container
