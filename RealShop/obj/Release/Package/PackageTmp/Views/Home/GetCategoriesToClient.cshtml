@@ -1,35 +1,42 @@
-﻿@model IQueryable <DomainModel.Classes.Category>
+﻿@model IQueryable<DomainModel.Classes.Category>
 
 @{
     Layout = null;
 }
 
-<div id ="tabs">
-    
-   <ul> 
+<div id="tabs">
+
+    <ul class="nav nav-tabs">
         @{
             int counter = 1;
-
             foreach (var item in Model)
             {
-                if (counter == 1) 
+                if (counter == 1)
                 {
-                     //hide parfums
+                    //hide parfums
                 }
                 else
                 {
                     string str = "#tabs" + counter;
-                    <li class="category_list"><a href="@str">@item.CategoryName</a></li>
-                }
+                    if (counter == 2)
+                    {
+                        <li class="category_list active"><a data-toggle="tab" href="@str">@item.CategoryName</a></li>
+                    }
 
+                    else
+                    {
+                        <li class="category_list"><a data-toggle="tab" href="@str">@item.CategoryName</a></li>
+                    }
+                }
                 counter++;
             }
-        }       
+        }
     </ul>
+
     <div class="emptycart" id="cart"></div>
     <div class="infocart" id="infocart">@{Html.RenderAction("ShowCartOnPage", "Cart");}</div>
-    
-    <div id="in_cart_modal"class="modal fade in_cart" role="dialog" tabindex="-1">
+
+    <div id="in_cart_modal" class="modal fade in_cart" role="dialog" tabindex="-1">
         <div class="modal-dialog">
             <div class=" modal-content" style="min-width:600px">
                 <div class="modal-header">
@@ -41,42 +48,72 @@
             </div>
         </div>
     </div>
-   @*<div class="in_cart" id="in_cart"></div>*@
-   
-    @{   
-        counter = 1;   
 
-        foreach (var item in Model)
-        {
-            if (counter == 1) 
+    <div class="tab-content">
+        @{
+            counter = 1;
+            foreach (var item in Model)
             {
-                 //hide parfums
+                if (counter == 1)
+                {
+                    //hide parfums
+                }
+
+                else
+                {
+                    string id = "tabs" + counter;
+                    string filter_class_name = "filter" + item.CategoryId;
+                    string product_container_id = "product_container_CategoryId" + item.CategoryId;
+
+
+                    if (counter == 2)
+                    {
+                        <div id="@id" class="tab-pane fade in active total_container">
+
+                            <div class="@filter_class_name">@Html.Action("FilterCategoryId" + item.CategoryId, "Home", new { item.CategoryId })</div>
+
+                            <div class="product_container" id="@product_container_id">
+                                @Html.Action("GetNotAllProductsToClient", "Home", new { item.CategoryId })
+                            </div>
+
+                            @*Your share button code*@
+                            <div class="fb-share-button" style="float:left; margin-top:2%; margin-left:-1.5%"
+                                 data-href="http://levisage.com.ua"
+                                 data-layout="button_count">
+                            </div>
+
+                            <div style="clear:both; float:none"></div>
+                            <br />
+                            <div id="btn + @item.CategoryId" class="get_all_products_button">@Ajax.ActionLink("Показать все товары на одной странице", "GetProductsToClient", "Home", new { item.CategoryId }, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = product_container_id, LoadingElementId = "wait", OnBegin = "StartAjaxLoader", OnComplete = "CloseModalAjaxLoader(this)" }, new { @class = "text_in_get_all_products_button" })</div>
+                        </div>
+                    }
+
+                    else
+                    {
+                        <div id="@id" class="tab-pane fade total_container">
+
+                            <div class="@filter_class_name">@Html.Action("FilterCategoryId" + item.CategoryId, "Home", new { item.CategoryId })</div>
+
+                            <div class="product_container" id="@product_container_id">
+                                @Html.Action("GetNotAllProductsToClient", "Home", new { item.CategoryId })
+                            </div>
+
+                            @*Your share button code*@
+                            <div class="fb-share-button" style="float:left; margin-top:2%; margin-left:-1.5%"
+                                 data-href="http://levisage.com.ua"
+                                 data-layout="button_count">
+                            </div>
+
+                            <div style="clear:both; float:none"></div>
+                            <br />
+                            <div id="btn + @item.CategoryId" class="get_all_products_button">@Ajax.ActionLink("Показать все товары на одной странице", "GetProductsToClient", "Home", new { item.CategoryId }, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = product_container_id, LoadingElementId = "wait", OnBegin = "StartAjaxLoader", OnComplete = "CloseModalAjaxLoader(this)" }, new { @class = "text_in_get_all_products_button" })</div>
+                        </div>
+                    }
+
+                }
+                counter++;
             }
-
-            else
-            {
-                string id = "tabs" + counter;
-                string filter_class_name = "filter"+item.CategoryId;
-                string product_container_id = "product_container_CategoryId" + item.CategoryId;
-                <div id="@id" class="total_container">   
-                            <div class="@filter_class_name">@Html.Action("FilterCategoryId"+item.CategoryId, "Home", new {item.CategoryId})</div>                         
-                                <div class="product_container" id="@product_container_id">                                                            
-                                    @*@Html.Action("GetProductsToClient", "Home", new {item.CategoryId})*@      
-                                    @Html.Action("GetNotAllProductsToClient", "Home", new { item.CategoryId })           
-                                </div>  
-                    <!-- Your share button code -->
-                    <div class="fb-share-button" style="float:left; margin-top:2%; margin-left:-1%"
-                         data-href="http://levisage.com.ua"
-                         data-layout="button_count">
-                    </div>
-                    <div style="clear:both; float:none"></div>   
-                    <br />
-                    <div id="btn + @item.CategoryId" class="get_all_products_button">@Ajax.ActionLink("Показать все товары на одной странице", "GetProductsToClient", "Home", new { item.CategoryId }, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = product_container_id, LoadingElementId = "wait", OnBegin = "StartAjaxLoader", OnComplete = "CloseModalAjaxLoader(this)" }, new { @class = "text_in_get_all_products_button" })</div>
-                    @*@Html.ActionLink("Показать все товары на одной странице","GetProductsToClient", "Home", new {item.CategoryId }, null)*@                               
-                </div>  
-            }                
-            counter++;
-        }   
-      } 
-            
+        }
+    </div>
 </div>
+

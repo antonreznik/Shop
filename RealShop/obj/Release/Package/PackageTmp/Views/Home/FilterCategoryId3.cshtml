@@ -9,26 +9,24 @@
                 @Html.Label("Уход за кожей лица", new { @class = "main_string_in_filter" })
             </div>
             
-
             <div>
                 @Html.CheckBoxFor(model=>model.BodyCare)
                 @Html.Label("Уход за телом", new { @class = "main_string_in_filter" })
             </div>
             
-
             <div>
                 @Html.CheckBoxFor(model=>model.LipsCare)
                 @Html.Label("Уход за губами", new { @class = "main_string_in_filter" })
             </div>
             
-
             <div>
-                @Html.CheckBoxFor(model=>model.HandCare)
+                @Html.CheckBoxFor(model=>model.HandCare, new {@type="checkbox" })
                 @Html.Label("Уход за кожей рук", new { @class = "main_string_in_filter" })
-            </div>          
+            </div>    
+            <br />   
+            <input type="submit" class="btn filter_button_wrapper" value="Применить фильтр" />      
         </div>
         <br/>           
-          <input type="submit" class="filterbuttonId3" value="Применить фильтр" />
-                      
+                     
     }
 
