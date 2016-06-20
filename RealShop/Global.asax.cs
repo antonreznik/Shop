@@ -9,6 +9,8 @@ using RealShop.Infrastructure;
 using WebMatrix.WebData;
 using System.Threading;
 using DomainModel.Entity;
+using RealShop.App_Start;
+using System.Web.Optimization;
 
 namespace RealShop
 {
@@ -24,6 +26,7 @@ namespace RealShop
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             
         }
     }

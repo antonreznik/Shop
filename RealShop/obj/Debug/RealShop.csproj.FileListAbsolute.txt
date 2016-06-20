@@ -373,3 +373,8 @@ D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepos
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\obj\Debug\RealShop.csprojResolveAssemblyReference.cache
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\obj\Debug\RealShop.dll
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\obj\Debug\RealShop.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\bin\Antlr3.Runtime.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\bin\System.Web.Optimization.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\bin\WebGrease.dll
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\bin\Antlr3.Runtime.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\RealShop\bin\System.Web.Optimization.xml
