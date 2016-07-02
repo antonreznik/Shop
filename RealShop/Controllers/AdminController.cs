@@ -170,7 +170,7 @@ namespace RealShop.Controllers
                 return View(obj);
             }
         }
-        
+
         //------------------------------------------------------
         //Добавление косметики в категорию
         public ActionResult AddCosmetic (int CategoryId)
@@ -409,7 +409,7 @@ namespace RealShop.Controllers
                 }
             }
 
-            else if(CategoryId==2)
+            else if (CategoryId == 2)
             {
                 Cosmetic obj = cosmeticrepo.GetProductById(ProductId);
                 if (obj != null)
@@ -423,10 +423,10 @@ namespace RealShop.Controllers
                 }
             }
 
-            else if (CategoryId==3)
+            else if (CategoryId == 3)
             {
                 Care obj = carerepo.GetProductById(ProductId);
-                if(obj!=null)
+                if (obj != null)
                 {
                     return File(obj.ImageData, obj.ImageMimeType);
                 }
@@ -439,6 +439,7 @@ namespace RealShop.Controllers
 
             return null;
         }
+
 
         //------------------------------------------------------
         //Изменение категории в товаре

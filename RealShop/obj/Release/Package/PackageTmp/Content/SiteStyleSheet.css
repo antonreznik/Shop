@@ -162,7 +162,7 @@
 .product
 {
     position:relative;
-    height:350px;
+    height:385px;
     width:20%;
     font-size:14px;
     font-family:Arial;
@@ -172,6 +172,8 @@
     text-align:center; 
     margin-left:4.2%;
     margin-top:3%;
+    padding-left:0.5%;
+    padding-right:0.5%;
 }
     .product:hover
     {
@@ -232,7 +234,7 @@
     position:absolute;
     height:50%;
     display:none;
-    margin-top:-95%;
+    margin-top:-90%;
     text-align:center;
     color:darkorange;
     background-color:white;
@@ -482,7 +484,7 @@ a:focus, a:hover, a:active
 .list_with_colors{
     position:absolute;
     top:65%;
-    left:5%;
+    left:8.5%;
 }
 
 .main_string_in_filter{
