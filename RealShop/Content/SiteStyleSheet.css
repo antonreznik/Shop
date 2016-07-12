@@ -4,6 +4,8 @@
     background-color:black;
     min-width:1300px;
     max-width:1400px;
+    margin:auto;
+    background:linear-gradient(black,grey);
 }
 
 .header 
