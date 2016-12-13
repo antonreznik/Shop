@@ -18,5 +18,6 @@ namespace DomainModel.Interfaces
         IQueryable<Care> GetProductByFilters(bool FaceSkin, bool BodyCare, bool HairCare, bool MenSkinCare);
         void ChangeAvailability(int productId, bool isAvailable);
         IQueryable<Care> AdminGetProductsFromCategory(int CategoryId);
+        void AddCountOfView(int ProductId);
     }
 }

@@ -88,7 +88,7 @@ namespace DomainModel.Entity
             //                                        select Cosmetics).Take(1);
             IQueryable<Cosmetic> CategoryProducts = context.Cosmetics
                 .Where(cosmetic => cosmetic.CategoryId == CategoryId && cosmetic.IsAvailable == true)
-                .OrderBy(cosmetic => cosmetic.Price).Take(12);
+                .OrderByDescending(cosmetic => cosmetic.CountOfView).Take(12);
 
             foreach (var item in CategoryProducts)
             {
@@ -343,6 +343,19 @@ namespace DomainModel.Entity
                 context.Entry(item).State = EntityState.Modified;
             }
             obj.IsAvailable = isAvailable;
+            context.SaveChanges();
+        }
+
+        //-----------------------------------------
+        //Добавление просмотра
+        public void AddCountOfView(int productId)
+        {
+            Cosmetic obj = GetProductById(productId);
+            foreach (var item in obj.Colors)
+            {
+                context.Entry(item).State = EntityState.Modified;
+            }
+            obj.CountOfView += 1;
             context.SaveChanges();
         }
     }
