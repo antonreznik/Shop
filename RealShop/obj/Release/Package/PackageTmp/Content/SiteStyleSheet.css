@@ -1,9 +1,11 @@
 ﻿.mainpage
 {
-    /*background-image:url(Images/MainPageGreen.jpg);*/
-    background-color:black;
+    background-image:url(Images/8.jpg);
+    /*background-color:black;*/
     min-width:1300px;
     max-width:1400px;
+    margin:auto;
+    /*background:linear-gradient(black,grey);*/
 }
 
 .header 
@@ -146,11 +148,12 @@
             margin-left:10%;
         }
 
-    hr
+    #eyes_subtypes hr, #lips_subtypes hr, #tonic_subtypes hr, #nail_subtypes hr
     {
         margin-top:0px;
         margin-bottom:0px;
-        color:black;
+        height:1px;
+        background-color:black;
     }
 
 .product_container
@@ -489,7 +492,17 @@ a:focus, a:hover, a:active
 
 .main_string_in_filter{
     font-weight:bold;
+    display:inline;
+    margin-bottom:0;
 }
+
+#eyes_subtypes label, #lips_subtypes label, #tonic_subtypes label, #nail_subtypes label{
+    display:inline;
+    margin-bottom:0;
+    display:inline;
+    font-weight:normal;
+}
+
 
 .get_all_products_button{
     margin-left:37.5%;

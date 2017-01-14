@@ -1,10 +1,10 @@
-﻿/*!
+﻿!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+ 
 
-/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+! normalize.css v3.0.1 | MIT License | git.io/normalize 
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -6200,14 +6200,14 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
+# sourceMappingURL=bootstrap.css.map 
 
-/*!
+!
  *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
-/* FONT PATH
- * -------------------------- */
+ 
+ FONT PATH
+ * -------------------------- 
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.2.0');
@@ -6223,7 +6223,7 @@ button.close {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* makes the font 33% larger relative to the icon container */
+ makes the font 33% larger relative to the icon container 
 .fa-lg {
   font-size: 1.33333333em;
   line-height: 0.75em;
@@ -6365,8 +6365,8 @@ button.close {
 .fa-inverse {
   color: #ffffff;
 }
-/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
+ Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons 
 .fa-glass:before {
   content: "\f000";
 }
