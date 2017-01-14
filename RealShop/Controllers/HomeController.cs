@@ -147,12 +147,14 @@ namespace RealShop.Controllers
             else if (CategoryId == 2)
             {
                 obj = CosmeticRepo.GetProductById(ProductId);
+                CosmeticRepo.AddCountOfView(ProductId);
                 return PartialView("GetOneProductInfo", obj);
             }
 
             else if (CategoryId == 3)
             {
                 obj = CareRepo.GetProductById(ProductId);
+                CareRepo.AddCountOfView(ProductId);
                 return PartialView("GetOneProductInfo", obj);
             }
 

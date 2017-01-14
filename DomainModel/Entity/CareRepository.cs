@@ -79,7 +79,7 @@ namespace DomainModel.Entity
         {
             IQueryable<Care> CategoryProducts = context.Cares
                 .Where(cares => cares.CategoryId == CategoryId && cares.IsAvailable == true)
-                .OrderBy(cares => cares.Price).Take(12);
+                .OrderByDescending(cares => cares.CountOfView).Take(12);
 
             return CategoryProducts;
         }
@@ -172,6 +172,20 @@ namespace DomainModel.Entity
                 context.Entry(item).State = EntityState.Modified;
             }
             obj.IsAvailable = isAvailable;
+            context.SaveChanges();
+        }
+
+
+        //-----------------------------------------
+        //Добавление просмотра
+        public void AddCountOfView(int productId)
+        {
+            Care obj = GetProductById(productId);
+            foreach (var item in obj.Colors)
+            {
+                context.Entry(item).State = EntityState.Modified;
+            }
+            obj.CountOfView += 1;
             context.SaveChanges();
         }
     }

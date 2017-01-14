@@ -21,5 +21,6 @@ namespace DomainModel.Classes
          public string ImageMimeType { get; set; }
          public List<Color> Colors { get; set; }
          public bool IsAvailable { get; set; }
+         public int CountOfView { get; set; }
     }
 }
