@@ -57,7 +57,7 @@ namespace RealShop.Controllers
             this.categoryrepo = categoryrepo;
             Mapper.CreateMap<OrderViewModel, Order>();
             Mapper.CreateMap<RealShop.Models.OrderViewModel.ProductsInOrderViewModel, ProductsInOrder>();
-            Currency = 32;
+            Currency = 35;
             /*Mapper.CreateMap<RealShop.Models.OrderViewModel.ParfumInOrderViewModel, ParfumInOrder>();
             Mapper.CreateMap<RealShop.Models.OrderViewModel.CosmeticInOrderViewModel, CosmeticInOrder>();
             Mapper.CreateMap<RealShop.Models.OrderViewModel.CareInOrderViewModel, CareInOrder>();*/
