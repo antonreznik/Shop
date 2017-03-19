@@ -37,6 +37,7 @@ namespace RealShop.Infrastructure
             ninjectkernel.Bind<ICosmeticRepository>().To<CosmeticRepository>();
             ninjectkernel.Bind<ICareRepository>().To<CareRepository>();
             ninjectkernel.Bind<IColor>().To<ColorRepository>();
+            ninjectkernel.Bind<IDataForPrice>().To<DataForPriceRepository>();
         }
     }
 }

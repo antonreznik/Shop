@@ -132,3 +132,4 @@ D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepos
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\DomainModel\bin\Debug\Ninject.xml
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\DomainModel\obj\Debug\DomainModel.dll
 D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\DomainModel\obj\Debug\DomainModel.pdb
+D:\Антон\Программирование\С#\ASP.NET.MVC\RealShop\GitRepository\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache

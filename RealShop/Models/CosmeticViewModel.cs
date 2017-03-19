@@ -26,8 +26,10 @@ namespace RealShop.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         
-        [Required(ErrorMessage = "Заполните цену")]
         public decimal Price { get; set; }
+
+        [Required(ErrorMessage = "Заполните цену")]
+        public double NewPrice { get; set; }
 
         [Required(ErrorMessage = "Не заполнено Id категории")]
         [HiddenInput(DisplayValue = false)]

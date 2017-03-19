@@ -47,6 +47,15 @@
         </div>
         <br />
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NewPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NewPrice)
+            @Html.ValidationMessageFor(model => model.NewPrice)
+        </div>
+        <br />
+
         <div class="editor-field">
             @Html.EditorFor(model => model.CategoryId)
             @Html.ValidationMessageFor(model => model.CategoryId)

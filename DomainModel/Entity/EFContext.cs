@@ -18,6 +18,7 @@ namespace DomainModel.Entity
         public DbSet<Order> Orders { get; set; }
         public DbSet<ProductsInOrder> ProductsInOrder { get; set; }
         public DbSet<Color> Colors { get; set; }
+        public DbSet<DataForPriceBuilding> DataForPrice { get; set; }
 
         //public EFContext(): base("DB_9CFFAE_RealShop") { }
 
