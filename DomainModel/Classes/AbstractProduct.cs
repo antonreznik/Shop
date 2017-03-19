@@ -10,17 +10,19 @@ namespace DomainModel.Classes
 {
      public abstract class AbstractProduct
     {
-         [Key]
-         public int ProductId { get; set; }
-         public string ProductName { get; set; }
-         public int CategoryId { get; set; }
-         public string CategoryName { get; set; }
-         public string Description { get; set; }
-         public decimal Price { get; set; }
-         public byte[] ImageData { get; set; }
-         public string ImageMimeType { get; set; }
-         public List<Color> Colors { get; set; }
-         public bool IsAvailable { get; set; }
-         public int CountOfView { get; set; }
+        [Key]
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public double NewPrice { get; set; }
+        public int PriceToShow { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
+        public List<Color> Colors { get; set; }
+        public bool IsAvailable { get; set; }
+        public int CountOfView { get; set; }
     }
 }

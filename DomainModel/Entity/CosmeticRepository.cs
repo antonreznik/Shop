@@ -29,6 +29,7 @@ namespace DomainModel.Entity
         {
             if (obj.ProductId == 0)
             {
+                obj.PriceToShow = BuildPrice(obj.NewPrice);
                 context.Cosmetics.Add(obj);
             }
 
@@ -40,6 +41,8 @@ namespace DomainModel.Entity
                     prod.ProductName = obj.ProductName;
                     prod.CategoryId = obj.CategoryId;
                     prod.Price = obj.Price;
+                    prod.NewPrice = obj.NewPrice;
+                    prod.PriceToShow = BuildPrice(obj.NewPrice);
                     prod.Description = obj.Description;
                     prod.Type = obj.Type;
                     prod.SubType = obj.SubType;
@@ -357,6 +360,17 @@ namespace DomainModel.Entity
             }
             obj.CountOfView += 1;
             context.SaveChanges();
+        }
+
+        //-----------------------------------------
+        //Формирование цены
+        private int BuildPrice(double price)
+        {
+            var dataForPrice = context.DataForPrice.First();
+            return Convert.ToInt32 (price * dataForPrice.PriceCoefficient
+                         * dataForPrice.Currency
+                         * dataForPrice.PostPercentComission
+                         + dataForPrice.PostFixedComission);
         }
     }
 }
