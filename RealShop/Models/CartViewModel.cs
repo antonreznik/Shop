@@ -67,7 +67,7 @@ namespace RealShop.Models
                 if (prod != null)
                 {
                     prod.Quantity++;
-                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow;
+                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
                 }
 
                 else
@@ -77,7 +77,7 @@ namespace RealShop.Models
                     {
                         obj = obj,
                         Quantity = QuantityProduct,
-                        TotalPrice = QuantityProduct * obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow,
+                        TotalPrice = QuantityProduct * (obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow),
                         Color = obj.Colors[0]
                     });
                 }
@@ -89,7 +89,7 @@ namespace RealShop.Models
                 if (prod != null)
                 {
                     prod.Quantity++;
-                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow;
+                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
                 }
 
                 else
@@ -99,7 +99,7 @@ namespace RealShop.Models
                     {
                         obj = obj,
                         Quantity = QuantityProduct,
-                        TotalPrice = QuantityProduct * obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow            
+                        TotalPrice = QuantityProduct * (obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow)            
                     });
                 }
             }        
@@ -186,7 +186,7 @@ namespace RealShop.Models
                 if (prod.Quantity > 1)
                 {
                     prod.Quantity--;
-                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow;
+                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
                 }
 
                 else
@@ -202,7 +202,7 @@ namespace RealShop.Models
                 if (prod.Quantity > 1)
                 {
                     prod.Quantity--;
-                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow;
+                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
                 }
 
                 else

@@ -46,8 +46,17 @@
             </div>
         }
 
-        <span class="price_on_main_page">Цена - @Convert.ToInt32((item.Price * currency)) грн.</span>
-        @*<div class="buy_button">@Ajax.ActionLink("В корзину", "AddProductToCart", "Cart", new { item.ProductId, item.CategoryId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "ShowMessageAddToCart" }, new { @class = "text_in_buy_button" })</div>*@
+        <span class="price_on_main_page">Цена - 
+        @if (item.PriceToShow == 0)
+        {
+            @Convert.ToInt32((item.Price * currency));
+        }
+        else
+        {
+            @item.PriceToShow
+        }
+         грн.</span>
+              
         <div class="buy_button" onclick="getSelectedColor(this,@item.ProductId, @item.CategoryId)"><span class="text_in_buy_button">В корзину</span> </div>
         <br />
     </div>

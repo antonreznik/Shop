@@ -29,7 +29,6 @@ namespace DomainModel.Entity
         {
             if (obj.ProductId == 0)
             {
-                obj.PriceToShow = BuildPrice(obj.NewPrice);
                 context.Cares.Add(obj);
             }
 
@@ -42,7 +41,6 @@ namespace DomainModel.Entity
                     prod.CategoryId = obj.CategoryId;
                     prod.Price = obj.Price;
                     prod.NewPrice = obj.NewPrice;
-                    prod.PriceToShow = BuildPrice(obj.NewPrice);
                     prod.Description = obj.Description;
                     prod.Type = obj.Type;
                     if (obj.ImageMimeType != null && obj.ImageData != null)
@@ -190,17 +188,6 @@ namespace DomainModel.Entity
             }
             obj.CountOfView += 1;
             context.SaveChanges();
-        }
-
-        //-----------------------------------------
-        //Формирование цены
-        private int BuildPrice(double price)
-        {
-            var dataForPrice = context.DataForPrice.First();
-            return Convert.ToInt32(price * dataForPrice.PriceCoefficient
-                         * dataForPrice.Currency
-                         * dataForPrice.PostPercentComission
-                         + dataForPrice.PostFixedComission);
         }
     }
 }

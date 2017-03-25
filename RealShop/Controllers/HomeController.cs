@@ -17,14 +17,16 @@ namespace RealShop.Controllers
         private IProductRepository ProductRepo;
         private ICosmeticRepository CosmeticRepo;
         private ICareRepository CareRepo;
+        private IDataForPrice DataForPriceRepo;
         //--------------------------------------------------
         //Конструктор
-        public HomeController(ICategoryRepository CategoryRepo, IProductRepository ProductRepo, ICosmeticRepository CosmeticRepo, ICareRepository CareRepo)
+        public HomeController(ICategoryRepository CategoryRepo, IProductRepository ProductRepo, ICosmeticRepository CosmeticRepo, ICareRepository CareRepo, IDataForPrice DataForPriceRepo)
         {
             this.CategoryRepo = CategoryRepo;
             this.ProductRepo = ProductRepo;
             this.CosmeticRepo = CosmeticRepo;
             this.CareRepo = CareRepo;
+            this.DataForPriceRepo = DataForPriceRepo;
             Mapper.CreateMap<ModelForCosmeticFilter, CosmeticFilter>();
         }
         
@@ -61,6 +63,7 @@ namespace RealShop.Controllers
             {
                 products = CareRepo.GetProductsFromCategory(CategoryId);
             }
+            products.ToList().ForEach(x => x.PriceToShow = BuildPrice(x.NewPrice));
             return View("GetProductsToClient", products);         
            
         }
@@ -85,6 +88,8 @@ namespace RealShop.Controllers
             {
                 products = CareRepo.GetNotAllProductsFromCategory(CategoryId);
             }
+
+            products.ToList().ForEach(x => x.PriceToShow = BuildPrice(x.NewPrice));
             return View("GetProductsToClient", products);
 
         }
@@ -115,6 +120,7 @@ namespace RealShop.Controllers
         {
             CosmeticFilter filt = Mapper.Map<CosmeticFilter>(obj);
             IQueryable<Cosmetic> Cosmetics = CosmeticRepo.GetProductByFilters(filt);
+            Cosmetics.ToList().ForEach(x => x.PriceToShow = BuildPrice(x.NewPrice));
             return PartialView("GetProductsToClient", Cosmetics);
         }
 
@@ -129,6 +135,7 @@ namespace RealShop.Controllers
         public ActionResult FilterCategoryId3(ModelForCareFilter obj)
         {
             IQueryable<Care> Cares = CareRepo.GetProductByFilters(obj.FaceSkin, obj.BodyCare, obj.LipsCare, obj.HandCare);
+            Cares.ToList().ForEach(x => x.PriceToShow = BuildPrice(x.NewPrice));
             return PartialView("GetProductsToClient", Cares);
         }
 
@@ -147,6 +154,7 @@ namespace RealShop.Controllers
             else if (CategoryId == 2)
             {
                 obj = CosmeticRepo.GetProductById(ProductId);
+                obj.PriceToShow = BuildPrice(obj.NewPrice);
                 CosmeticRepo.AddCountOfView(ProductId);
                 return PartialView("GetOneProductInfo", obj);
             }
@@ -154,6 +162,7 @@ namespace RealShop.Controllers
             else if (CategoryId == 3)
             {
                 obj = CareRepo.GetProductById(ProductId);
+                obj.PriceToShow = BuildPrice(obj.NewPrice);
                 CareRepo.AddCountOfView(ProductId);
                 return PartialView("GetOneProductInfo", obj);
             }
@@ -190,6 +199,24 @@ namespace RealShop.Controllers
             return View();
         }
 
-        
+        //-----------------------------------------
+        //Формирование цены
+        private int BuildPrice(double price)
+        {
+            if(price > 0)
+            {
+                var dataForPrice = DataForPriceRepo.GetData();
+                return Convert.ToInt32(price * dataForPrice.PriceCoefficient
+                             * dataForPrice.Currency
+                             * dataForPrice.PostPercentComission
+                             + dataForPrice.PostFixedComission);
+            }
+
+            else
+            {
+                return 0;
+            }
+            
+        }
     }
 }
