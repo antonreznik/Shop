@@ -20,7 +20,7 @@ namespace RealShop.Extensions
             {
                 Info.TotalQuantityOfProducts = Cart.Products.Select(x => x.Quantity).Sum();
                 //Info.TotalPriceOfProducts = Cart.Products.Select(x => x.obj.Price * x.Quantity).Sum();
-                Info.TotalPriceOfProducts = Cart.Products.Select(x => x.obj.PriceToShow == 0 ? x.obj.Price : x.obj.PriceToShow * x.Quantity).Sum();
+                Info.TotalPriceOfProducts = Cart.Products.Select(x => (x.obj.PriceToShow == 0 ? x.obj.Price : x.obj.PriceToShow) * x.Quantity).Sum();
                 return Info;
             }
         }

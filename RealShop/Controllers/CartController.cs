@@ -25,6 +25,7 @@ namespace RealShop.Controllers
         ICareRepository carerepo;
         IOrderRepository orderrepo;
         ICategoryRepository categoryrepo;
+        IDataForPrice dataForPriceRepo;
         ColorRepository colorrepo = new ColorRepository();
         public decimal Currency { get; set; }
         public CartViewModel Cart 
@@ -48,13 +49,14 @@ namespace RealShop.Controllers
             }
         
         }
-        public CartController(IProductRepository productrepo, IOrderRepository orderrepo, ICosmeticRepository cosmeticrepo, ICareRepository carerepo, ICategoryRepository categoryrepo)
+        public CartController(IProductRepository productrepo, IOrderRepository orderrepo, ICosmeticRepository cosmeticrepo, ICareRepository carerepo, ICategoryRepository categoryrepo, IDataForPrice DataForPriceRepo)
         {
             this.productrepo = productrepo;
             this.cosmeticrepo = cosmeticrepo;
             this.carerepo = carerepo;
             this.orderrepo = orderrepo;
             this.categoryrepo = categoryrepo;
+            this.dataForPriceRepo = DataForPriceRepo;
             Mapper.CreateMap<OrderViewModel, Order>();
             Mapper.CreateMap<RealShop.Models.OrderViewModel.ProductsInOrderViewModel, ProductsInOrder>();
             Currency = 35;
@@ -105,6 +107,7 @@ namespace RealShop.Controllers
             {
                 obj = cosmeticrepo.GetProductById(ProductId);
                 obj.Price = Convert.ToInt32(obj.Price * Currency);
+                obj.PriceToShow = BuildPrice(obj.NewPrice);
                 if (obj.Colors.Count > 0)
                 {
                     if (ColorId == null)
@@ -132,6 +135,7 @@ namespace RealShop.Controllers
             {
                 obj = carerepo.GetProductById(ProductId);
                 obj.Price = Convert.ToInt32(obj.Price * Currency);
+                obj.PriceToShow = BuildPrice(obj.NewPrice);
                 if (Cart == null)
                 {
                     Cart = new CartViewModel();
@@ -297,6 +301,25 @@ namespace RealShop.Controllers
         {
             NewPostOfficesViewModel offices = new NewPostOfficesViewModel(City);
             return View(offices);
-        }     
+        }
+
+        //-----------------------------------------
+        //Формирование цены
+        private int BuildPrice(double price)
+        {
+            if (price > 0)
+            {
+                var dataForPrice = dataForPriceRepo.GetData();
+                return Convert.ToInt32(price * dataForPrice.PriceCoefficient
+                             * dataForPrice.Currency
+                             * dataForPrice.PostPercentComission
+                             + dataForPrice.PostFixedComission);
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

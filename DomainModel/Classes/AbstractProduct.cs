@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,13 @@ namespace DomainModel.Classes
         public string Description { get; set; }
         public decimal Price { get; set; }
         public double NewPrice { get; set; }
-        public int PriceToShow { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
         public List<Color> Colors { get; set; }
         public bool IsAvailable { get; set; }
         public int CountOfView { get; set; }
+
+        [NotMapped]
+        public int PriceToShow { get; set; }
     }
 }
