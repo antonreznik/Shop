@@ -71,5 +71,11 @@ namespace DomainModel.Entity
             var products = ord.ProductInOrder.ToList();             
             return products;
         }
+
+        //Выбор заказа по ИД 
+        public Order GetOrderById(int orderId)
+        {
+            return Context.Orders.FirstOrDefault(p => p.OrderId == orderId);
+        }
     }
 }

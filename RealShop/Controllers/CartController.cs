@@ -27,7 +27,7 @@ namespace RealShop.Controllers
         ICategoryRepository categoryrepo;
         IDataForPrice dataForPriceRepo;
         ColorRepository colorrepo = new ColorRepository();
-        public decimal Currency { get; set; }
+        public double Currency { get; set; }
         public CartViewModel Cart 
         { 
             get
@@ -106,7 +106,7 @@ namespace RealShop.Controllers
             if(CategoryId==2)
             {
                 obj = cosmeticrepo.GetProductById(ProductId);
-                obj.Price = Convert.ToInt32(obj.Price * Currency);
+                //obj.Price = Convert.ToInt32(obj.Price * Currency);
                 obj.PriceToShow = BuildPrice(obj.NewPrice);
                 if (obj.Colors.Count > 0)
                 {
@@ -134,7 +134,7 @@ namespace RealShop.Controllers
             if (CategoryId == 3)
             {
                 obj = carerepo.GetProductById(ProductId);
-                obj.Price = Convert.ToInt32(obj.Price * Currency);
+                //obj.Price = Convert.ToInt32(obj.Price * Currency);
                 obj.PriceToShow = BuildPrice(obj.NewPrice);
                 if (Cart == null)
                 {
@@ -193,7 +193,10 @@ namespace RealShop.Controllers
             CartViewModel obj = Cart;
             if (Cart != null)
             {
-                Cart.InfoCart = Cart.GetCartInfo();
+                var dataForPrice = dataForPriceRepo.GetData();
+
+                Cart.InfoCart = Cart.GetCartInfo(dataForPrice.DeliveryFixedComission);
+                Cart.PriceForDelivery = dataForPrice.DeliveryFixedComission;
             }
             return PartialView("ShowFullCart", obj);
         }
@@ -236,7 +239,7 @@ namespace RealShop.Controllers
             //}
 
             if (ModelState.IsValid)
-            {  
+            {
                 //if(obj.DeliveryMethod=="NewPost")
                 //{
                 //    obj.DeliveryCity = null;
@@ -248,10 +251,12 @@ namespace RealShop.Controllers
                 //    obj.NewPostCity = null;
                 //    obj.NewPostOffice = null;
                 //}
-
+                var dataForPrice = dataForPriceRepo.GetData();
                 CartViewModel cart = Cart;
+                obj.DeliveryPrice = cart.InfoCart.TotalPriceOfProducts < 700 ? dataForPrice.DeliveryFixedComission : 0;
                 obj.TotalPriceOfAllProducts = cart.InfoCart.TotalPriceOfProducts;
                 obj.TotalQuantityOfAllParfums = cart.InfoCart.TotalQuantityOfProducts;
+
 
                 foreach (var item in cart.Products)
                 {

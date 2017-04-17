@@ -13,5 +13,6 @@ namespace DomainModel.Interfaces
         int AddOrder(Order obj);
         void CloseOrder(string date, string newPostRef, string orderId);
         List<ProductsInOrder> GetOrderProducts(int orderId);
+        Order GetOrderById(int orderId);
     }
 }

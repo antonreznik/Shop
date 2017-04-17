@@ -26,6 +26,7 @@ namespace DomainModel.Classes
         public DateTime DateOfSendingOrderToClient { get; set; }
         public string NewPostRef { get; set; }
         public string OrderState { get; set; }
+        public double DeliveryPrice { get; set; }
         public virtual ICollection<ProductsInOrder> ProductInOrder { get; set; }
     }
 }

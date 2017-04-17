@@ -1,8 +1,8 @@
 ﻿@model IQueryable<DomainModel.Classes.AbstractProduct>
 
-@{
+@*@{
     int currency = 35;
-}
+}*@
 
 
 @foreach (var item in Model)
@@ -47,14 +47,14 @@
         }
 
         <span class="price_on_main_page">Цена - 
-        @if (item.PriceToShow == 0)
+        @*@if (item.PriceToShow == 0)
         {
             @Convert.ToInt32((item.Price * currency));
         }
         else
-        {
+        {*@
             @item.PriceToShow
-        }
+        @*}*@
          грн.</span>
               
         <div class="buy_button" onclick="getSelectedColor(this,@item.ProductId, @item.CategoryId)"><span class="text_in_buy_button">В корзину</span> </div>

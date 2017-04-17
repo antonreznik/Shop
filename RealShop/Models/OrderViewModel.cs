@@ -61,7 +61,7 @@ namespace RealShop.Models
         public int TotalQuantityOfAllParfums { get; set; }
 
         [HiddenInput(DisplayValue = false)]
-        public decimal TotalPriceOfAllProducts { get; set; }
+        public double TotalPriceOfAllProducts { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public DateTime DateOfSendingOrderToClient { get; set; }
@@ -71,6 +71,9 @@ namespace RealShop.Models
 
         [HiddenInput(DisplayValue = false)]
         public string OrderState { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public double DeliveryPrice { get; set; }
 
         //--------------------------------------------
         //Класс для товаров в корзине
@@ -83,7 +86,7 @@ namespace RealShop.Models
             public byte[] ImageData { get; set; }
             public string ImageMimeType { get; set; }
             public int Quantity { get; set; }
-            public decimal TotalPrice { get; set; }
+            public double TotalPrice { get; set; }
         }
 
         //Конструктор

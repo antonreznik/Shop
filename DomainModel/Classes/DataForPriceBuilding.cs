@@ -17,5 +17,7 @@ namespace DomainModel.Classes
         public double PostPercentComission { get; set; }
 
         public double PostFixedComission { get; set; }
+
+        public double DeliveryFixedComission { get; set; }
     }
 }
