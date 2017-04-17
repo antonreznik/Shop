@@ -37,7 +37,7 @@ namespace DomainModel.Entity
                 {
                     prod.ProductName = obj.ProductName;
                     prod.CategoryId = obj.CategoryId;
-                    prod.Price = obj.Price;
+                    //prod.Price = obj.Price;
                     prod.PriceFor50ml = obj.PriceFor50ml;
                     prod.PriceFor75ml = obj.PriceFor75ml;
                     prod.PriceFor100ml = obj.PriceFor100ml;

@@ -1,8 +1,8 @@
 ﻿@model DomainModel.Classes.AbstractProduct
 @{
-string one_buy_button = "one_buy_button"+ Model.ProductId;
-string one_message = "one_message" + Model.ProductId;
-int currency = 35;
+    string one_buy_button = "one_buy_button"+ Model.ProductId;
+    string one_message = "one_message" + Model.ProductId;
+    //int currency = 35;
 
 @*<div class="one_product_info">*@
     <div class="one_message_add_to_cart" id="@one_message">Товар добавлен в корзину</div>
@@ -36,14 +36,14 @@ int currency = 35;
                 <p class="name_of_product_on_one_product_page">Наименование: @Model.ProductName</p>
                 <p class="description">Описание: @Model.Description</p>
                 <p class="price_on_one_product_page">Цена - 
-                @if (Model.PriceToShow == 0)
+                @*@if (Model.PriceToShow == 0)
                 {
                     @Convert.ToInt32((Model.Price * currency))
                 }
                 else
-                {
+                {*@
                     @Model.PriceToShow
-                }
+                @*}*@
                  грн</p>
                @*</div>*@
     

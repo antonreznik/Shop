@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DomainModel.Classes.ProductsInOrder>
+﻿@model RealShop.Models.OrderViewModel
 
 
 <table class="table-bordered table-condensed">
@@ -10,7 +10,7 @@
         <th>Количество</th>
         <th>Стоимость</th>
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.ProductInOrder)
     {
         <tr>
             <td>@item.ProductId</td>
@@ -21,4 +21,22 @@
             <td>@item.TotalPrice</td>
         </tr>
     }
+
+    <tr>
+        <td></td>
+        <td>Доставка</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>@Model.DeliveryPrice</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>Итого</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>@(Model.TotalPriceOfAllProducts + Model.DeliveryPrice)</td>
+    </tr>
 </table>

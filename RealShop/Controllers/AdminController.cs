@@ -41,6 +41,7 @@ namespace RealShop.Controllers
                 cfg.CreateMap<Care, CareViewModel>();
                 cfg.CreateMap<CareViewModel, Care>();
                 cfg.CreateMap<FilterParametersForOrdersView, FilterParametersForOrders>();
+                cfg.CreateMap<Order, OrderViewModel>();
 
             });
             Mapper.CreateMap<Category, CategoryViewModel>();
@@ -52,6 +53,8 @@ namespace RealShop.Controllers
             Mapper.CreateMap<Care, CareViewModel>();
             Mapper.CreateMap<CareViewModel, Care>();
             Mapper.CreateMap<FilterParametersForOrdersView, FilterParametersForOrders>();
+            Mapper.CreateMap<Order, OrderViewModel>();
+            Mapper.CreateMap<ProductsInOrder, OrderViewModel.ProductsInOrderViewModel>();
         }
 
         //---------------------------------------------------
@@ -515,8 +518,8 @@ namespace RealShop.Controllers
         [HttpPost]
         public ActionResult GetProductsInOrder(int orderId)
         {
-            List<ProductsInOrder> products = orderrepo.GetOrderProducts(orderId);
-            return PartialView("GetProductsInOrder",products);
+            var viewModel = Mapper.Map<Order, OrderViewModel>(orderrepo.GetOrderById(orderId));
+            return PartialView("GetProductsInOrder", viewModel);
         }
 
         //Проставление признака о доступности товара

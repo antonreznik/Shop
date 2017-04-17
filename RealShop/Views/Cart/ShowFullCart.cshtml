@@ -75,13 +75,24 @@ else
         </tr>
         }
 
+        <tr>
+            <td></td>
+            <td>Доставка:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                @(Model.InfoCart.TotalPriceOfProducts < 700 ? @Model.PriceForDelivery : 0)
+            </td>
+        </tr>
+                  
         <tr class="lastraw">
             <td></td>
             <td>Итого:</td>
             <td>@Model.InfoCart.TotalQuantityOfProducts</td>
             <td></td>
             <td></td>
-            <td>@Model.InfoCart.TotalPriceOfProducts</td>
+            <td>@Model.InfoCart.TotalPriceWithDelivery</td>
         </tr>
     </table>
     <div class="make_order_button" id="make_order">Оформить заказ</div>

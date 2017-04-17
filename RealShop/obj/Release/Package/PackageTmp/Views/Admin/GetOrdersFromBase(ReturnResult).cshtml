@@ -50,7 +50,7 @@
                 <td>@item.Email</td>
                 <td>@item.NewPostCity</td>
                 <td>@item.NewPostOffice</td>
-                <td>@item.TotalPriceOfAllProducts</td>             
+                <td>@(Convert.ToDouble(item.TotalPriceOfAllProducts) + item.DeliveryPrice)</td>           
                 <td>@Ajax.ActionLink("Товары в заказе", "GetProductsInOrder", "Admin", new { item.OrderId }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "products_info", InsertionMode = InsertionMode.Replace, LoadingElementId = "wait", OnBegin = "AjaxLoader", OnComplete = "ShowProductInOrder" })</td>
 
             @if (item.OrderState == "New") 

@@ -15,6 +15,7 @@ namespace RealShop.Models
         public List <CareInCart> Cares { get; set; }*/
         public InfoCartViewModel InfoCart = new InfoCartViewModel();
         public List<ProductsInCart> Products { get; set; }
+        public double PriceForDelivery { get; set; }
 
 
         /*public class ParfumInCart
@@ -42,7 +43,7 @@ namespace RealShop.Models
         {
             public AbstractProduct obj { get; set; }
             public int Quantity { get; set; }
-            public decimal TotalPrice { get; set; }
+            public double TotalPrice { get; set; }
             public string Size { get; set; }
             public Color Color { get; set; }
         }
@@ -67,7 +68,8 @@ namespace RealShop.Models
                 if (prod != null)
                 {
                     prod.Quantity++;
-                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    //prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow;
                 }
 
                 else
@@ -77,7 +79,8 @@ namespace RealShop.Models
                     {
                         obj = obj,
                         Quantity = QuantityProduct,
-                        TotalPrice = QuantityProduct * (obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow),
+                        //TotalPrice = QuantityProduct * (obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow),
+                        TotalPrice = QuantityProduct * obj.PriceToShow,
                         Color = obj.Colors[0]
                     });
                 }
@@ -89,7 +92,8 @@ namespace RealShop.Models
                 if (prod != null)
                 {
                     prod.Quantity++;
-                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    //prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow;
                 }
 
                 else
@@ -99,7 +103,8 @@ namespace RealShop.Models
                     {
                         obj = obj,
                         Quantity = QuantityProduct,
-                        TotalPrice = QuantityProduct * (obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow)            
+                        //TotalPrice = QuantityProduct * (obj.PriceToShow == 0 ? obj.Price : obj.PriceToShow)   
+                        TotalPrice = QuantityProduct * obj.PriceToShow
                     });
                 }
             }        
@@ -113,7 +118,7 @@ namespace RealShop.Models
             if (parfum != null)
             {            
                 parfum.Quantity++;
-                parfum.TotalPrice = parfum.Quantity * parfum.obj.Price;     
+                parfum.TotalPrice = parfum.Quantity * parfum.obj.NewPrice;     
             }
 
             else
@@ -123,7 +128,7 @@ namespace RealShop.Models
                 {
                     obj = obj,
                     Quantity=QuantityParfum,
-                    TotalPrice=QuantityParfum*obj.Price,
+                    TotalPrice=QuantityParfum*obj.NewPrice,
                     Size = Size
                 });
             }
@@ -186,7 +191,8 @@ namespace RealShop.Models
                 if (prod.Quantity > 1)
                 {
                     prod.Quantity--;
-                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    //prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow;
                 }
 
                 else
@@ -202,7 +208,8 @@ namespace RealShop.Models
                 if (prod.Quantity > 1)
                 {
                     prod.Quantity--;
-                    prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    //prod.TotalPrice = prod.Quantity * (prod.obj.PriceToShow == 0 ? prod.obj.Price : prod.obj.PriceToShow);
+                    prod.TotalPrice = prod.Quantity * prod.obj.PriceToShow;
                 }
 
                 else
@@ -222,7 +229,7 @@ namespace RealShop.Models
             if (parfum.Quantity > 1)
             {
                 parfum.Quantity--;
-                parfum.TotalPrice = parfum.Quantity * parfum.obj.Price;
+                parfum.TotalPrice = parfum.Quantity * parfum.obj.NewPrice;
             }
 
             else
