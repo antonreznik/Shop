@@ -22,8 +22,6 @@ namespace RealShop.Models
         [Required(ErrorMessage = "Заполните описание товара")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
-        
-        public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Заполните цену")]
         public double NewPrice { get; set; }
