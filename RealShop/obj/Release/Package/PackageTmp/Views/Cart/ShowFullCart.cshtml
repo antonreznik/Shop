@@ -3,10 +3,7 @@
 
 @if (Model == null || Model.InfoCart.TotalQuantityOfProducts == 0)
 {
-    @*<script>
-        $(".in_cart").css({ "height": "100px", });
-    </script>*@
-    <p class="text_in_empty_cart">Ваша корзина пуста</p>   
+    <p class="text_in_empty_cart">Ваша корзина пуста</p>
 }
 
 
@@ -14,18 +11,17 @@ else
 {
     <table class="cart_table table-responsive">
         <tr>
-            <th></th>
-            <th>Наименование товара</th>
-            <th>Количество</th>
+            <th colspan="2">Наименование товара</th>
+            <th>Кол-во</th>
             <th>Добавить</th>
             <th>Удалить</th>
             <th>Цена</th>
         </tr>
-        
+
         @foreach (var item in Model.Products)
         {
             <tr>
-                <td style="width: 1%">
+                <td style="width: 1%; border-right: none">
                     @if (item.obj.ImageData == null)
                     {
                         @:None
@@ -36,16 +32,16 @@ else
                         <img width="75" height="75" src="@Url.Action("GetImage", "Admin", new { item.obj.ProductId, item.obj.CategoryId })" />
                     }
                 </td>
-                <td>
-                    @item.obj.ProductName  
+                <td style="border-left: none">
+                    @item.obj.ProductName
                     <br />
-                    <b>@item.Size 
-                       @if (item.Color != null) 
-                       { 
-                           @item.Color.ColorName
-                       }
+                    <b>
+                        @item.Size
+                        @if (item.Color != null)
+                        {
+                            @item.Color.ColorName
+                        }
                     </b>
-
                 </td>
                 <td>
                     @item.Quantity
@@ -53,86 +49,66 @@ else
                 @if (item.Color != null)
                 {
                     <td>
-                        <div class="plus_in_cart">@Ajax.ActionLink("+", "AddProductToCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size, item.Color.ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                        @Ajax.ActionLink("+", "AddProductToCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size, item.Color.ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" }, new { @class = "plus_in_cart" })
                     </td>
                     <td>
-                        <div class="minus_in_cart">@Ajax.ActionLink("-", "RemoveProductFromCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size, item.Color.ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                        @Ajax.ActionLink("-", "RemoveProductFromCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size, item.Color.ColorId }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" }, new { @class = "minus_in_cart" })
                     </td>
                 }
 
                 else
                 {
                     <td>
-                        <div class="plus_in_cart">@Ajax.ActionLink("+", "AddProductToCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                        @Ajax.ActionLink("+", "AddProductToCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" }, new { @class = "plus_in_cart" })
                     </td>
                     <td>
-                        <div class="minus_in_cart">@Ajax.ActionLink("-", "RemoveProductFromCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" })</div>
+                        @Ajax.ActionLink("-", "RemoveProductFromCart", "Cart", new { item.obj.ProductId, item.obj.CategoryId, item.Size }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "infocart", OnSuccess = "UpdateFullCart" }, new { @class = "minus_in_cart" })
                     </td>
                 }
-                
-<td>@item.TotalPrice</td>
 
-        </tr>
+                <td>@item.TotalPrice</td>
+
+            </tr>
         }
 
-        <tr>
-            <td></td>
-            <td>Доставка:</td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr class="lastraw">
+            <td colspan="5" class="text-left">
+                <span class="text-uppercase">Доставка:</span>
+                <p>(при заказе от 700 грн <b class="text-uppercase">бесплатно</b>)</p>
+            </td>
             <td>
                 @(Model.InfoCart.TotalPriceOfProducts < 700 ? @Model.PriceForDelivery : 0)
             </td>
         </tr>
-                  
-        <tr class="lastraw">
-            <td></td>
-            <td>Итого:</td>
+
+        <tr class="bold-text">
+            <td colspan="2">Итого:</td>
             <td>@Model.InfoCart.TotalQuantityOfProducts</td>
             <td></td>
             <td></td>
             <td>@Model.InfoCart.TotalPriceWithDelivery</td>
         </tr>
     </table>
+    <p><b>Срок доставки:</b> 10-21 день (точную дату сообщит менеджер)</p>
     <div class="make_order_button" id="make_order">Оформить заказ</div>
-
-    
 
     <script>
     function UpdateFullCart() {
         $.ajax({
             url: "@Url.Action("ShowFullCart", "Cart")",
             success: function (data) {
-                $("#in_cart").html(data);           
+                $("#in_cart").html(data);
             }
             })
         }
-        
+
         $("#make_order").click(function () {
-            //$("body").append('<div id="make_order_form"></div>')
             $("#in_cart_modal").modal("hide");
             $("#make_order_form1").modal();
             $.ajax({
                 url: "@Url.Action("MakeOrder", "Cart")",
             success: function (data) { $("#make_order_form").html(data) }
         });
-           
-        //$("#make_order_form").dialog({
-        //    width: 1000,
-        //    height: 350,
-        //    modal: true,
-        //    close: function (event, ui) {
-        //        $("#make_order_form").remove();
-        //    }
-        //});
-
     });
-
-    //Выбор доставки
-    $("#newpost").change(function () {
-        alert("Почта")
-    });
-
     </script>
 }

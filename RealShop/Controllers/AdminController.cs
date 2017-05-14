@@ -9,6 +9,7 @@ using DomainModel.Entity;
 using DomainModel.Interfaces;
 using RealShop.Models;
 using System.Globalization;
+using DomainModel.Classes.Colors;
 
 namespace RealShop.Controllers
 {
@@ -132,12 +133,12 @@ namespace RealShop.Controllers
         
         //-----------------------------------------------------
         //Удаление категории
-        public ActionResult DeleteCategory(int CategoryId)
-        {
-            Category obj = repo.GetAllCategoriesFromBase.FirstOrDefault(category => category.CategoryId == CategoryId);
-            TempData["message"] = repo.DeleteCategory(obj);
-            return RedirectToAction("Categories", "Admin");
-        }
+        //public ActionResult DeleteCategory(int CategoryId)
+        //{
+        //    Category obj = repo.GetAllCategoriesFromBase.FirstOrDefault(category => category.CategoryId == CategoryId);
+        //    TempData["message"] = repo.DeleteCategory(obj);
+        //    return RedirectToAction("Categories", "Admin");
+        //}
         //-----------------------------------------------------
 
 
@@ -184,7 +185,7 @@ namespace RealShop.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddCosmetic(CosmeticViewModel obj, HttpPostedFileBase Image)
+        public ActionResult AddCosmetic(CosmeticViewModel obj, HttpPostedFileBase Image, IEnumerable<HttpPostedFileBase> Images)
         {
             if (ModelState.IsValid)
             {
@@ -197,6 +198,22 @@ namespace RealShop.Controllers
                 Cosmetic prod = Mapper.Map<Cosmetic>(obj);
                 cosmeticrepo.SaveProduct(prod);
                 TempData["message"] = String.Format("Товар '{0}' добавлен", obj.ProductName);
+
+                if (Images.First() != null)
+                {
+                    foreach (var item in Images)
+                    {
+                        Color newColor = new Color();
+                        newColor.CategoryId = prod.CategoryId;
+                        newColor.ProductId = prod.ProductId;
+                        newColor.ColorName = item.FileName.Substring(0, item.FileName.IndexOf("."));
+                        newColor.ImageData = new byte[item.ContentLength];
+                        newColor.ImageMimeType = item.ContentType;
+                        newColor.IsAvailable = true;
+                        item.InputStream.Read(newColor.ImageData, 0, item.ContentLength);
+                        colorrepo.SaveColor(newColor);
+                    }
+                }
                 return RedirectToAction("Categories", "Admin");
             }
 
@@ -250,13 +267,13 @@ namespace RealShop.Controllers
 
             else if (CategoryId==2)
             {
-                IQueryable<Cosmetic> Cosmetics = cosmeticrepo.AdminGetProductsFromCategory(CategoryId);
+                IQueryable<Cosmetic> Cosmetics = cosmeticrepo.AdminGetProductsFromCategory(CategoryId).OrderByDescending(x => x.ProductId);
                 return View("ShowCosmeticsInCategory", Cosmetics);
             }
 
             else if (CategoryId==3)
             {
-                IQueryable<Care> Cares = carerepo.AdminGetProductsFromCategory(CategoryId);
+                IQueryable<Care> Cares = carerepo.AdminGetProductsFromCategory(CategoryId).OrderByDescending(x => x.ProductId);
                 return View("ShowCaresInCategory", Cares);
             }
 

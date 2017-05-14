@@ -17,7 +17,6 @@ namespace DomainModel.Classes
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
-        //public double Price { get; set; }
         public double NewPrice { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }

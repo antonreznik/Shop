@@ -27,8 +27,7 @@
     }
     
     <div class="Categories">
-        @item.CategoryId - @item.CategoryName - @Html.ActionLink("Редактировать","EditCategory","Admin", new {item.CategoryId},null) | 
-        @Html.ActionLink("Удалить", "DeleteCategory", "Admin", new {item.CategoryId },null) |
+        @item.CategoryId - @item.CategoryName - @Html.ActionLink("Редактировать","EditCategory","Admin", new {item.CategoryId},null) |
         @Html.ActionLink("Редактирование товаров в категории", "ShowProductsInCategory", "Admin", new { item.CategoryId }, null) |
         @Html.ActionLink("Добавить новый товар", add_method,"Admin", new {item.CategoryId}, null)
     </div>
