@@ -386,6 +386,11 @@
     text-decoration: none;    
 }
 
+.plus_in_cart a:hover{
+    text-decoration:none;
+    color: black;
+}
+
 .minus_in_cart
 {
     margin-left:40%;
@@ -398,18 +403,22 @@
     text-decoration: none;   
 }
 
-.make_order_button
-    {
-        text-align:center;
-        margin-top:2%;
-        margin-left:40%;
-        width:26%;
-        height:35px;
-        background-color:#80EA69;
-        border-radius:5px 5px 5px 5px; 
-        cursor:pointer;
-        padding-top:1%;
-    }
+.minus_in_cart a:hover{
+    text-decoration:none;
+    color: black;
+}
+
+.make_order_button {
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 40%;
+    width: 26%;
+    height: 35px;
+    background-color: #80EA69;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    padding-top: 1%;
+}
 
 .text_confirm_order
 {
