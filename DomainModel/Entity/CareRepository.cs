@@ -39,7 +39,6 @@ namespace DomainModel.Entity
                 {
                     prod.ProductName = obj.ProductName;
                     prod.CategoryId = obj.CategoryId;
-                    //prod.Price = obj.Price;
                     prod.NewPrice = obj.NewPrice;
                     prod.Description = obj.Description;
                     prod.Type = obj.Type;
