@@ -19,7 +19,6 @@ namespace RealShop.Models
         public string Type { get; set; }
         public IEnumerable<SelectListItem> TypeList { get; set; }
 
-        [Required(ErrorMessage="Выберите подтип косметики")]
         public string SubType { get; set; }
 
         [Required(ErrorMessage = "Заполните описание товара")]
@@ -42,6 +41,7 @@ namespace RealShop.Models
         {
             List<string> types = new List<string>();
             types.Add("Для глаз");
+            types.Add("Для бровей");
             types.Add("Для губ");
             types.Add("Тональные средства");
             types.Add("Для ногтей");

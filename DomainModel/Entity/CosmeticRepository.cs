@@ -127,7 +127,7 @@ namespace DomainModel.Entity
         {
             IQueryable<Cosmetic> Cosmetics = GetAllProductsFromBase;
             //Переданы пустые значение в фильтре
-            if (obj.Eyes==false && obj.Lips==false && obj.Nails==false && obj.Tonic==false && obj.Blusher == false && obj.Correctors == false && obj.Eye_Shadow == false && obj.Eyeliner == false && obj.Foundation == false && obj.Liner == false && obj.Lip_Gloss == false && obj.Lip_Liner == false && obj.Lipstick == false && obj.Makeup_Base == false && obj.Mascara == false && obj.Nail_Care == false && obj.Nail_Polish == false && obj.Nail_Polish_Remover == false && obj.Powder == false)
+            if (obj.Eyes==false && obj.Sourcils==false && obj.Lips==false && obj.Nails==false && obj.Tonic==false && obj.Blusher == false && obj.Correctors == false && obj.Eye_Shadow == false && obj.Eyeliner == false && obj.Foundation == false && obj.Liner == false && obj.Lip_Gloss == false && obj.Lip_Liner == false && obj.Lipstick == false && obj.Makeup_Base == false && obj.Mascara == false && obj.Nail_Care == false && obj.Nail_Polish == false && obj.Nail_Polish_Remover == false && obj.Powder == false)
             {
                 foreach (var item in Cosmetics)
                 {
@@ -145,6 +145,8 @@ namespace DomainModel.Entity
                 IQueryable<Cosmetic> Liner; // Подводка
                 IQueryable<Cosmetic> Eyeliner; //Контурные карандаши для глаз
                 IQueryable<Cosmetic> Eye_Shadow; //Тени для век
+
+                IQueryable<Cosmetic> Sourcils; //Все для бровей
 
                 IQueryable<Cosmetic> Lips; //Все для губ
                 IQueryable<Cosmetic> Lipstick; //Помада
@@ -208,6 +210,12 @@ namespace DomainModel.Entity
                     Result = Result.Concat(Eye_Shadow).ToList();
                 }
 
+                //Выбираем все для бровей     
+                if (obj.Sourcils)
+                {                
+                    Sourcils = Cosmetics.Where(cosmetic => cosmetic.Type == "Для бровей");
+                    Result = Result.Concat(Sourcils).ToList();
+                }
 
                 //Выбираем все для губ 
                 if (obj.Lips && obj.Lipstick == false && obj.Lip_Gloss == false && obj.Lip_Liner == false)

@@ -14,6 +14,9 @@ namespace RealShop.Models
         public bool Eyeliner { get; set; } //Контурные карандаши для глаз
         public bool Eye_Shadow { get; set; } //Тени для век
 
+        //Для бровей
+        public bool Sourcils { get; set; } //Для бровей
+
         //Для губ
         public bool Lips { get; set; } //Для губ
         public bool Lipstick { get; set; } //Помада

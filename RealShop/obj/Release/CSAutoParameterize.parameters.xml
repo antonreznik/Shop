@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Строка подключения в web.config, используемая приложением для доступа к базе данных." defaultValue="Data Source=SQL5016.Smarterasp.net;Initial Catalog=DB_9CFFAE_RealShop;Integrated Security=False;User ID=DB_9CFFAE_RealShop_admin;Password=milan2005" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\Антон\\Программирование\\С\#\\ASP\.NET\.MVC\\RealShop\\GitRepository\\RealShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5016.Smarterasp.net;Initial Catalog=DB_9CFFAE_RealShop;Integrated Security=False;User ID=DB_9CFFAE_RealShop_admin;Password=milan2005" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\MyProjects\\levisage\\RealShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

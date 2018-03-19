@@ -2,119 +2,125 @@
 
 @using (Ajax.BeginForm("FilterCategoryId2", "Home", new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "product_container_CategoryId2", LoadingElementId = "wait", OnBegin = "StartAjaxLoader", OnComplete = "CloseModalAjaxLoader" }))
 {
-    <div class="inside_filter">
-        @*//------------------------------------------//
-            //Для глаз//*@
-        <div>
-            @Html.CheckBoxFor(model => model.Eyes, new { id = "for_eyes" })
-            @Html.Label("Для глаз", new { @class = "main_string_in_filter" })
-        </div>
-        <div id="eyes_subtypes" style="display:none">
-            <div>
-                @Html.CheckBoxFor(model => model.Mascara, new { id = "mascara" })
-                @Html.Label("Тушь")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Liner, new { id = "liner" })
-                @Html.Label("Подводка")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Eyeliner, new { id = "eyeliner" })
-                @Html.Label("Контурные карандаши для глаз")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Eye_Shadow, new { id = "eye_shadow" })
-                @Html.Label("Тени для век")
-            </div>
-            <hr />
-        </div>
-
-        @*//---------------------------------------//
-            //Для губ//*@
-        <div>
-            @Html.CheckBoxFor(model => model.Lips, new { id = "for_lips" })
-            @Html.Label("Для губ", new { @class = "main_string_in_filter" })
-        </div>
-        <div id="lips_subtypes" style="display:none">
-            <div>
-                @Html.CheckBoxFor(model => model.Lipstick, new { id = "lipstick" })
-                @Html.Label("Помада")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Lip_Gloss, new { id = "lip_gloss" })
-                @Html.Label("Блеск для губ")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Lip_Liner, new { id = "lip_liner" })
-                @Html.Label("Контурные карандаши для губ")
-            </div>
-            <hr />
-        </div>
-
-        @*//---------------------------------------//
-            //Тональные средства//*@
-        <div>
-            @Html.CheckBoxFor(model => model.Tonic, new { id = "tonic" })
-            @Html.Label("Тональные средства", new { @class = "main_string_in_filter" })
-        </div>
-        <div id="tonic_subtypes" style="display:none">
-            <div>
-                @Html.CheckBoxFor(model => model.Foundation, new { id = "foundation" })
-                @Html.Label("Тональный крем")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Powder, new { id = "powder" })
-                @Html.Label("Пудра")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Correctors, new { id = "correctors" })
-                @Html.Label("Корректоры")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Makeup_Base, new { id = "makeup_base" })
-                @Html.Label("Основа под макияж")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Blusher, new { id = "blusher" })
-                @Html.Label("Румяна")
-            </div>
-            <hr />
-        </div>
-
-        @*//---------------------------------------//
-            //Для ногтей//*@
-        <div>
-            @Html.CheckBoxFor(model => model.Nails, new { id = "nail" })
-            @Html.Label("Для ногтей", new { @class = "main_string_in_filter" })
-        </div>
-        <div id="nail_subtypes" style="display:none">
-            <div>
-                @Html.CheckBoxFor(model => model.Nail_Polish, new { id = "nail_polish" })
-                @Html.Label("Лаки")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Nail_Care, new { id = "nail_care" })
-                @Html.Label("Уход за ногтями")
-            </div>
-
-            <div>
-                @Html.CheckBoxFor(model => model.Nail_Polish_Remover, new { id = "polish_remover" })
-                @Html.Label("Жидкость для снятия лака")
-            </div>
-        </div>
-        <br />
-        <input type="submit" class="btn filter_button_wrapper" value="Применить фильтр" />
+<div class="inside_filter">
+    @*//------------------------------------------//
+        //Для глаз//*@
+    <div>
+        @Html.CheckBoxFor(model => model.Eyes, new { id = "for_eyes" })
+        @Html.Label("Для глаз", new { @class = "main_string_in_filter" })
     </div>
+    <div id="eyes_subtypes" style="display:none">
+        <div>
+            @Html.CheckBoxFor(model => model.Mascara, new { id = "mascara" })
+            @Html.Label("Тушь")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Liner, new { id = "liner" })
+            @Html.Label("Подводка")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Eyeliner, new { id = "eyeliner" })
+            @Html.Label("Контурные карандаши для глаз")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Eye_Shadow, new { id = "eye_shadow" })
+            @Html.Label("Тени для век")
+        </div>
+        <hr />
+    </div>
+    @*//---------------------------------------//
+        //Для бровей//*@
+    <div>
+        @Html.CheckBoxFor(model => model.Sourcils, new { id = "for_sourcils" })
+        @Html.Label("Для бровей", new { @class = "main_string_in_filter" })
+    </div>
+
+    @*//---------------------------------------//
+        //Для губ//*@
+    <div>
+        @Html.CheckBoxFor(model => model.Lips, new { id = "for_lips" })
+        @Html.Label("Для губ", new { @class = "main_string_in_filter" })
+    </div>
+    <div id="lips_subtypes" style="display:none">
+        <div>
+            @Html.CheckBoxFor(model => model.Lipstick, new { id = "lipstick" })
+            @Html.Label("Помада")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Lip_Gloss, new { id = "lip_gloss" })
+            @Html.Label("Блеск для губ")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Lip_Liner, new { id = "lip_liner" })
+            @Html.Label("Контурные карандаши для губ")
+        </div>
+        <hr />
+    </div>
+
+    @*//---------------------------------------//
+        //Тональные средства//*@
+    <div>
+        @Html.CheckBoxFor(model => model.Tonic, new { id = "tonic" })
+        @Html.Label("Тональные средства", new { @class = "main_string_in_filter" })
+    </div>
+    <div id="tonic_subtypes" style="display:none">
+        <div>
+            @Html.CheckBoxFor(model => model.Foundation, new { id = "foundation" })
+            @Html.Label("Тональный крем")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Powder, new { id = "powder" })
+            @Html.Label("Пудра")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Correctors, new { id = "correctors" })
+            @Html.Label("Корректоры")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Makeup_Base, new { id = "makeup_base" })
+            @Html.Label("Основа под макияж")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Blusher, new { id = "blusher" })
+            @Html.Label("Румяна")
+        </div>
+        <hr />
+    </div>
+
+    @*//---------------------------------------//
+        //Для ногтей//*@
+    <div>
+        @Html.CheckBoxFor(model => model.Nails, new { id = "nail" })
+        @Html.Label("Для ногтей", new { @class = "main_string_in_filter" })
+    </div>
+    <div id="nail_subtypes" style="display:none">
+        <div>
+            @Html.CheckBoxFor(model => model.Nail_Polish, new { id = "nail_polish" })
+            @Html.Label("Лаки")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Nail_Care, new { id = "nail_care" })
+            @Html.Label("Уход за ногтями")
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(model => model.Nail_Polish_Remover, new { id = "polish_remover" })
+            @Html.Label("Жидкость для снятия лака")
+        </div>
+    </div>
+    <br />
+    <input type="submit" class="btn filter_button_wrapper" value="Применить фильтр" />
+</div>
     <br />
 }
 <br />

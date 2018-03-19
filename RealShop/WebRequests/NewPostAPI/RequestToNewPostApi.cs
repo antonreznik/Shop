@@ -18,7 +18,7 @@ namespace RealShop.WebRequests.NewPostAPI
         {
             List<string> NewPostCities = new List<string>();
             string City = "";
-            //XmlReader xmlreader = XmlReader.Create(@"D:\Post.xml");
+            //XmlReader xmlreader = XmlReader.Create(@"F:\Post.xml");
             XmlReader xmlreader = XmlReader.Create(@"h:\root\home\anton1982-001\www\site1\Post.xml");
 
             while(xmlreader.Read())
@@ -39,7 +39,7 @@ namespace RealShop.WebRequests.NewPostAPI
             Dictionary<string, string> PostOffices = new Dictionary<string, string>();
             string CityInXml = "";
             string RefCity = "";
-            //XmlReader xmlreader = XmlReader.Create(@"D:\Post.xml");
+            //XmlReader xmlreader = XmlReader.Create(@"F:\Post.xml");
             XmlReader xmlreader = XmlReader.Create(@"h:\root\home\anton1982-001\www\site1\Post.xml");
             while (xmlreader.Read())
             {
@@ -73,7 +73,7 @@ namespace RealShop.WebRequests.NewPostAPI
 
             var XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                          "<file>\n" +
-                         "<apiKey>2ea672dd186bcde9fd013dbe6cf7ed85</apiKey>\n" +
+                         "<apiKey>e0cd2515e4ab5f5a35aa1c9590c224fd</apiKey>\n" +
                          "<modelName>Address</modelName>\n" +
                          "<calledMethod>getWarehouses</calledMethod>\n" +
                          "<methodProperties>\n"+
@@ -122,7 +122,7 @@ namespace RealShop.WebRequests.NewPostAPI
         {
             var XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                          "<file>\n" +
-                         "<apiKey>2ea672dd186bcde9fd013dbe6cf7ed85</apiKey>\n" +
+                         "<apiKey>e0cd2515e4ab5f5a35aa1c9590c224fd</apiKey>\n" +
                          "<modelName>Address</modelName>\n" +
                          "<calledMethod>getCities</calledMethod>\n" +
                          "<methodProperties/>\n"+
