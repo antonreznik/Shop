@@ -73,7 +73,7 @@ namespace RealShop.WebRequests.NewPostAPI
 
             var XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                          "<file>\n" +
-                         "<apiKey>e0cd2515e4ab5f5a35aa1c9590c224fd</apiKey>\n" +
+                         "<apiKey>6279b010a22b80739dadffcbd6f44d9e</apiKey>\n" +
                          "<modelName>Address</modelName>\n" +
                          "<calledMethod>getWarehouses</calledMethod>\n" +
                          "<methodProperties>\n"+
@@ -122,7 +122,7 @@ namespace RealShop.WebRequests.NewPostAPI
         {
             var XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                          "<file>\n" +
-                         "<apiKey>e0cd2515e4ab5f5a35aa1c9590c224fd</apiKey>\n" +
+                         "<apiKey>6279b010a22b80739dadffcbd6f44d9e</apiKey>\n" +
                          "<modelName>Address</modelName>\n" +
                          "<calledMethod>getCities</calledMethod>\n" +
                          "<methodProperties/>\n"+
